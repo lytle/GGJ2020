@@ -111,7 +111,7 @@ public class PlayerControl : MonoBehaviour
         for (int i = 0; i < catStack.Count; i++)
         {
             var catToMove = catStack.ToArray()[i];
-            var playerDisplacement = catDisplacementFromPlayer + (catStack.Count - i + 1) * 0.5f;
+            var playerDisplacement = catDisplacementFromPlayer + (catStack.Count - i + 1) * 1f;
             var swayingXpos = Mathf.Lerp(catToMove.transform.position.x, this.transform.position.x, 0.2f -(catDispalcementInStack * (catStack.Count - i + 1)));
             catToMove.transform.position = new Vector3(swayingXpos, this.transform.position.y + playerDisplacement, 0.0f); //Vector3.Lerp(catToMove.transform.position, playerDisplacement + this.transform.position, 0.2f - (0.03f * (i + 1)));
         }
@@ -126,6 +126,7 @@ public class PlayerControl : MonoBehaviour
         Debug.Log("Throwing cats");
         if (catStack.Count > 0)
         {
+            anim.SetBool("HandsUp", false);
             isThrowing = StartCoroutine("ThrowAllCats");
         }
     }
@@ -134,7 +135,7 @@ public class PlayerControl : MonoBehaviour
         while(catStack.Count > 0)
         {
             var catToThrow = catStack.Pop();
-            //catToThrow.GetComponent<CatMaster>().Throw(facingRight);
+            catToThrow.GetComponent<CatMaster>().Throw(facingRight, this.transform.position.y);
             anim.SetTrigger("Drop");
             yield return new WaitForSeconds(0.3f);
         }
@@ -158,17 +159,12 @@ public class PlayerControl : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         Debug.Log("pickupping");
-        catToStack.transform.root.gameObject.GetComponent<CatAI>().enabled = false;
-        Collider2D[] colliders = catToStack.GetComponents<Collider2D>();
-        foreach(Collider2D collider in colliders)
-        {
-            collider.enabled = false;
-        }
-        foreach(SpriteRenderer sr in catToStack.transform.parent.GetComponentsInChildren<SpriteRenderer>())
+        catToStack.GetComponent<CatMaster>().GotPickedUp();
+        foreach(SpriteRenderer sr in catToStack.transform.GetComponentsInChildren<SpriteRenderer>())
         {
             sr.sortingOrder += 5;
         }
-        catStack.Push(catToStack.transform.root.gameObject);
+        catStack.Push(catToStack.transform.gameObject);
     }
 
 

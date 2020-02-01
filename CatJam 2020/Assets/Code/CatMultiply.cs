@@ -23,13 +23,14 @@ public class CatMultiply : MonoBehaviour
     {
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.GetComponent<CatMultiply>() && makeBaby && other.tag.Equals("Cat") && other.gameObject.GetComponent<CatMultiply>().makeBaby)
+        Debug.Log("Collide with " + other.gameObject.name);
+        if(other.gameObject.GetComponent<CatMultiply>() && makeBaby && other.gameObject.tag.Equals("Cat") && other.gameObject.GetComponent<CatMultiply>().makeBaby)
         {
             other.gameObject.GetComponent<CatMultiply>().makeBaby = false;
-            GameObject me = transform.root.gameObject;
-            GameObject them = other.transform.root.gameObject;
+            GameObject me = transform.gameObject;
+            GameObject them = other.transform.gameObject;
             them.SetActive(false);
 
             GameManager.singleton.makeNewCat(transform.position, me, them);
