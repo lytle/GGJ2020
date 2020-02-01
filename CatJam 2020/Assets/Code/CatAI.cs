@@ -16,11 +16,15 @@ public class CatAI : MonoBehaviour
 
     private bool runningAround;
 
-    private Vector2 initDir, finalDir;
+    private Vector3 randomVec;
 
     private float curveTimerMax;
 
-    float timer = 2f;
+    float timer = 0f;
+
+    public Vector2 min, max;
+
+
 
     void Start()
     {
@@ -30,23 +34,27 @@ public class CatAI : MonoBehaviour
     void FixedUpdate()
     {
         timer -= Time.deltaTime;
-
-        if (timer <= 0f)
+        if(timer <= 0)
         {
-            timer = Random.Range(0, 4f);
-            curveTimerMax = timer;
-            initDir = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
-            finalDir = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+            randomVec = new Vector3(Random.Range(min.x, max.x), Random.Range(min.y, max.y), 0f);
+            GetComponent<SpriteRenderer>().flipX = transform.position.x < randomVec.x;
+            
+            timer = Random.Range(0, Mathf.Abs(randomVec.magnitude)/2);
+            
         }
-
-        Vector2 curDir = Vector2.Lerp(initDir, finalDir, timer / curveTimerMax);
         
+        Vector3 moveTow = Vector3.MoveTowards(transform.position, randomVec, speed * Time.deltaTime);
+
+        transform.position = Vector3.Slerp(transform.position, moveTow, Time.deltaTime);
 
         if (!DetectSideObstacle())
         {
+            /*
             //transform.position += ((transform.right * sideDirection + transform.up * upDownDirection ))/2 * speed * Time.deltaTime;
-            transform.Translate(curDir * speed * Time.deltaTime);
+            transform.Translate((transform.right * sideDirection + curDir * upDownDirection)/2 * speed * Time.deltaTime);
+            */
         }
+
         else
         {
             sideDirection *= -1;        //CHANGE DIRECTION
@@ -73,7 +81,6 @@ public class CatAI : MonoBehaviour
             if (hit.transform.CompareTag("Wall"))
             {
                 upDownDirection *= -1;
-                Debug.Log("HIT TOP/BOTTOM");
             }
         }
 
@@ -81,7 +88,6 @@ public class CatAI : MonoBehaviour
         {
             if (hit.transform.CompareTag("Wall"))
             {
-                Debug.Log("HIT SIDE");
                 return true;
             }
         }
