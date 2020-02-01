@@ -94,7 +94,7 @@ public class PlayerControl : MonoBehaviour
                     !facingRight && hit.gameObject.transform.position.x < this.transform.position.x)
                 {
                     Debug.Log("cat in range!");
-                    if (isThrowing == null && Input.GetButtonDown("PickUp")) StackCat(hit.gameObject);
+                    if (isThrowing == null && pickingUp == null && Input.GetButtonDown("PickUp")) StackCat(hit.gameObject);
                 }
 
             }
@@ -144,6 +144,8 @@ public class PlayerControl : MonoBehaviour
         isThrowing = null;
     }
 
+    private Coroutine pickingUp;
+
     private void StackCat(GameObject catToStack)
     {
         Debug.Log("Attemping pickup");
@@ -151,7 +153,7 @@ public class PlayerControl : MonoBehaviour
         {
             anim.SetTrigger("Pickup");
             anim.SetBool("HandsUp", true);
-            StartCoroutine(DelayedCatStack(catToStack, 0.15f));
+            pickingUp = StartCoroutine(DelayedCatStack(catToStack, 0.15f));
             
         }
     }
@@ -166,6 +168,7 @@ public class PlayerControl : MonoBehaviour
             sr.sortingOrder += 5;
         }
         catStack.Push(catToStack.transform.gameObject);
+        pickingUp = null;
     }
 
 
