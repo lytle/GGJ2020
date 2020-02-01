@@ -7,7 +7,8 @@ public class PlayerControl : MonoBehaviour
     float walkAcceleration = 75;
 
     public BoxCollider2D boxCollider;
-    public SpriteRenderer ourSprite;
+    public Transform spriteObject;
+    public Animator anim;
 
 
     public float maxVel = 10f;
@@ -15,13 +16,13 @@ public class PlayerControl : MonoBehaviour
     public float accel = 0.2f;
     public float decel = 0.75f;
 
-    private bool facingRight = true;
+    private bool facingRight = false;
     private Vector2 ourMoveDir;
 
     private void Awake()
     {
         boxCollider = GetComponentInChildren<BoxCollider2D>();
-        ourSprite = GetComponentInChildren<SpriteRenderer>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -36,10 +37,12 @@ public class PlayerControl : MonoBehaviour
         {
             velocity += accel;
             if (velocity > maxVel) velocity = maxVel;
+            anim.SetBool("isWalking", true);
         } else
         {
             velocity -= decel;
-            if (velocity < 0f) velocity = 0f; 
+            if (velocity < 0f) velocity = 0f;
+            anim.SetBool("isWalking", false);
         }
 
         this.transform.Translate(ourMoveDir * velocity * Time.deltaTime);
@@ -67,7 +70,7 @@ public class PlayerControl : MonoBehaviour
         if((ourMoveDir.x > 0.0f && !facingRight) || (ourMoveDir.x < 0.0f && facingRight))
         {
             facingRight = !facingRight;
-            ourSprite.flipX = !ourSprite.flipX;
+            spriteObject.localScale = new Vector3(spriteObject.localScale.x * -1.0f, spriteObject.localScale.y, spriteObject.localScale.z);
         }
 
         // Check for Cats.
