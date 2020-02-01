@@ -11,9 +11,12 @@ public class GameManager : MonoBehaviour
     public static GameManager singleton;
 
     [SerializeField]
+    private CatGenerator catFactory;
+    [SerializeField]
     private GameObject catPrefab;
     [SerializeField]
     private GameObject censorCloud;
+
     [SerializeField]
     private Timer timer;
     [SerializeField]
@@ -70,6 +73,9 @@ public class GameManager : MonoBehaviour
         //throw cats in random directions
         momma.SetActive(true);
         pappa.SetActive(true);
-        GameObject.Instantiate(catPrefab, pos.position, Quaternion.identity);
+        GameObject newCat = GameObject.Instantiate(catPrefab, pos.position, Quaternion.identity);
+        GameObject visuals = catFactory.GenerateRandomCat();
+        visuals.transform.parent = newCat.transform;
+        visuals.transform.localPosition = Vector3.zero;
     }
 }
