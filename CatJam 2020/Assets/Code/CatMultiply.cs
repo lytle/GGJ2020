@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class CatMultiply : MonoBehaviour
 {
-    private PolygonCollider2D catToCat;
+    private Collider2D catToCat;
     public bool makeBaby;
     [SerializeField]
     private float breedDelay = 3f;
     // Start is called before the first frame update
     void Start()
     {
-        catToCat = GetComponent<PolygonCollider2D>();
+        catToCat = GetComponent<Collider2D>();
         CalmCat();
     }
     private void OnEnable()
@@ -23,11 +23,12 @@ public class CatMultiply : MonoBehaviour
     {
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+/*    private void OnCollisionEnter2D(Collision2D other)
     {
         Debug.Log("Collide with " + other.gameObject.name);
         if(other.gameObject.GetComponent<CatMultiply>() && makeBaby && other.gameObject.tag.Equals("Cat") && other.gameObject.GetComponent<CatMultiply>().makeBaby)
         {
+            Debug.Log("Multiply");
             other.gameObject.GetComponent<CatMultiply>().makeBaby = false;
             GameObject me = transform.gameObject;
             GameObject them = other.transform.gameObject;
@@ -35,17 +36,19 @@ public class CatMultiply : MonoBehaviour
 
             GameManager.singleton.makeNewCat(transform.position, me, them);
         }
-    }
+    }*/
 
     public void CalmCat()
     {
         makeBaby = false;
-        StartCoroutine("MakeBabies");
+        StartCoroutine("BecomeSexy");
     }
 
-    IEnumerator MakeBabies()
+    IEnumerator BecomeSexy()
     {
-        yield return new WaitForSeconds(breedDelay);
+        float timeToSex = Random.Range(5f, 14f);
+        yield return new WaitForSeconds(timeToSex);
         makeBaby = true;
+        GameManager.singleton.AddHornyCat(this.gameObject);
     }
 }
