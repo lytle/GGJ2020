@@ -26,7 +26,7 @@ public class CatMultiply : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Entert");
-        if(makeBaby)
+        if(makeBaby && other.tag.Equals("Cat"))
         {
             Debug.Log("InTHERE");
             other.gameObject.GetComponent<CatMultiply>().makeBaby = false;
