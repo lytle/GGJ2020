@@ -6,8 +6,8 @@ public class PlayerControl : MonoBehaviour
     [SerializeField, Tooltip("Acceleration while grounded.")]
     float walkAcceleration = 75;
 
-    private BoxCollider2D boxCollider;
-    private SpriteRenderer ourSprite;
+    public BoxCollider2D boxCollider;
+    public SpriteRenderer ourSprite;
 
 
     public float maxVel = 10f;
@@ -69,24 +69,29 @@ public class PlayerControl : MonoBehaviour
         }
 
         // Retrieve all colliders we have intersected after velocity has been applied.
-        //Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, boxCollider.size, 0);
+        Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, boxCollider.size, 0);
 
-        /*foreach (Collider2D hit in hits)
+        foreach (Collider2D hit in hits)
         {
-            // Ignore our own collider.
-            if (hit == boxCollider)
-                continue;
-
-            ColliderDistance2D colliderDistance = hit.Distance(boxCollider);
-
-            // Ensure that we are still overlapping this collider.
-            // The overlap may no longer exist due to another intersected collider
-            // pushing us out of this one.
-            if (colliderDistance.isOverlapped)
+            // if its a cat
+            if (hit.gameObject.GetComponent<Rigidbody2D>() != null)
             {
-                transform.Translate(colliderDistance.pointA - colliderDistance.pointB);
+                // if we are facing it
+                if (facingRight && hit.gameObject.transform.position.x > this.transform.position.x ||
+                    !facingRight && hit.gameObject.transform.position.x < this.transform.position.x)
+                    Debug.Log("cat!");
 
+                //ColliderDistance2D colliderDistance = hit.Distance(boxCollider);
+
+                /*// Ensure that we are still overlapping this collider.
+                // The overlap may no longer exist due to another intersected collider
+                // pushing us out of this one.
+                if (colliderDistance.isOverlapped)
+                {
+                    transform.Translate(colliderDistance.pointA - colliderDistance.pointB);
+
+                }*/
             }
-        } */
+        }
     }
 }
