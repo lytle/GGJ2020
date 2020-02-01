@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c12778c2cb4b31459a23e4266addfc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CatPrefab: {fileID: 191667067488089868, guid: d870f6e7a3fe567468a0edb43d00bf05,
+  CatPrefab: {fileID: 5572449458689693300, guid: b1f06220142e03d4aa29fa3f36a435ce,
     type: 3}
   Bodies:
   - {fileID: 21300000, guid: 6658ec7ad2eda9c4b920ee1b1bbc0eb1, type: 3}
