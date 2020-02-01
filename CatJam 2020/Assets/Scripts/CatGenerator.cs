@@ -9,10 +9,13 @@ public class CatGenerator : MonoBehaviour
     [SerializeField]
     List<Sprite> Bodies, Faces, Tails;
 
+    [SerializeField]
+    List<Color> Colors;
+
     public GameObject GenerateRandomCat()
     {
         GameObject newCat = Instantiate(CatPrefab);
-        newCat.GetComponent<Cat>().SetParts(GetRandomSprite(Bodies), GetRandomSprite(Faces), GetRandomSprite(Tails));
+        newCat.GetComponent<Cat>().SetParts(GetRandomSprite(Bodies), GetRandomSprite(Faces), GetRandomSprite(Tails), Colors[Random.Range(0, Colors.Count - 1)]);
         return newCat;
     }
 
@@ -20,6 +23,7 @@ public class CatGenerator : MonoBehaviour
     {
         return sprites[Random.Range(0, sprites.Count - 1)];
     }
+
 
     private void Update()
     {
