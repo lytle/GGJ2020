@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
+    public static PlayerControl instance;
+
     public BoxCollider2D boxCollider;
     public Transform spriteObject;
     public Animator anim;
@@ -14,11 +16,20 @@ public class PlayerControl : MonoBehaviour
     public float accel = 0.2f;
     public float decel = 0.75f;
 
-    private bool facingRight = false;
+    public bool facingRight = false;
     private Vector2 ourMoveDir;
 
     private void Awake()
     {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(instance.gameObject);
+            instance = this;
+        }
         boxCollider = GetComponentInChildren<BoxCollider2D>();
         anim = GetComponentInChildren<Animator>();
     }
@@ -92,7 +103,6 @@ public class PlayerControl : MonoBehaviour
                 if (facingRight && hit.gameObject.transform.position.x > this.transform.position.x ||
                     !facingRight && hit.gameObject.transform.position.x < this.transform.position.x)
                 {
-                    Debug.Log("cat in range!");
                     if (isThrowing == null && Input.GetButtonDown("PickUp")) StackCat(hit.gameObject);
                 }
 
