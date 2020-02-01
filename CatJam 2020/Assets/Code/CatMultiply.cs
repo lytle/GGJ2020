@@ -45,7 +45,7 @@ public class CatMultiply : MonoBehaviour
 
     IEnumerator BecomeSexy()
     {
-        float timeToSex = Random.Range(5f, 14f);
+        float timeToSex = Random.Range(5f, 10f);
         yield return new WaitForSeconds(timeToSex);
         makeBaby = true;
         GameManager.singleton.AddHornyCat(this.gameObject);

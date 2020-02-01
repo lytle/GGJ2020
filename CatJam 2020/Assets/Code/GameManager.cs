@@ -109,9 +109,9 @@ public class GameManager : MonoBehaviour
         pappa.SetActive(true);
         GameObject newCat = GameObject.Instantiate(catPrefab, pos, Quaternion.identity);
 
-        momma.GetComponent<CatMaster>().Throw(true, PlayerControl.instance.gameObject.transform.position.y);
-        pappa.GetComponent<CatMaster>().Throw(true, PlayerControl.instance.gameObject.transform.position.y);
-        newCat.GetComponent<CatMaster>().Throw(true, PlayerControl.instance.gameObject.transform.position.y);
+        momma.GetComponent<CatMultiply>().CalmCat();
+        pappa.GetComponent<CatMultiply>().CalmCat();
+        newCat.GetComponent<CatMultiply>().CalmCat();
     }
 
     public GameObject GetNewCat()
