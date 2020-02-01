@@ -46,31 +46,35 @@ public class GameManager : MonoBehaviour
         }
         else if (state == State.game)
         {
-           // if (timer.timeRemaining > 0)
+            // if (timer.timeRemaining > 0)
             //{
-               // timerText.text = timer.timeRemaining.ToString("0.00");
-                //timer.tick();
+            // timerText.text = timer.timeRemaining.ToString("0.00");
+            //timer.tick();
 
+            int counter = 0;
             for(int i = 0; i < hornyCats.Count-1; i++)
             {
                 GameObject cat = hornyCats[i];
-                if (cat.GetComponent<CatMultiply>().makeBaby)
+                CatMultiply firstCatGenitals = cat.GetComponent<CatMultiply>();
+                if (firstCatGenitals.makeBaby)
                 for (int j = i + 1; j < hornyCats.Count; j++)
                 {
+                    counter++;
                     GameObject otherCat = hornyCats[j];
-                    Debug.Log("RWO)");
-                    if (otherCat.GetComponent<CatMultiply>().makeBaby)
+                    CatMultiply secondCatGenitals = otherCat.GetComponent<CatMultiply>();
+                    if (secondCatGenitals.makeBaby)
                     {  
-                        Debug.Log("CHe kicng two cats");
-                        if (Vector3.Distance(cat.transform.position, otherCat.transform.position) < .6f)
+                        if (Vector2.Distance(cat.transform.position, otherCat.transform.position) < .6f)
                         {
-                            cat.GetComponent<CatMultiply>().makeBaby = false;
-                            otherCat.GetComponent<CatMultiply>().makeBaby = false;
+                            firstCatGenitals.makeBaby = false;
+                            secondCatGenitals.makeBaby = false;
                             makeNewCat((cat.transform.position + otherCat.transform.position) / 2, cat, otherCat);
                         }
                     }
                 }
             }
+
+            Debug.Log("Counter:" + counter);
 
             for(int i = hornyCats.Count-1; i >= 0; i--)
             {
