@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    [SerializeField, Tooltip("Acceleration while grounded.")]
-    float walkAcceleration = 75;
-
     public BoxCollider2D boxCollider;
     public Transform spriteObject;
     public Animator anim;
@@ -29,8 +26,6 @@ public class PlayerControl : MonoBehaviour
     {
         // Use GetAxisRaw to ensure our input is either 0, 1 or -1.
         ourMoveDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-
-        Debug.Log(ourMoveDir);
 
         // acceleration
         if(ourMoveDir != Vector2.zero)
@@ -74,7 +69,10 @@ public class PlayerControl : MonoBehaviour
         }
 
         // Check for Cats.
-        //CheckForCats();
+        CheckForCats();
+
+        // Update Cat Stack
+        UpdateCatStack();
     }
 
     private void CheckForCats()
@@ -84,7 +82,7 @@ public class PlayerControl : MonoBehaviour
         foreach (Collider2D hit in hits)
         {
             // if its a cat
-            if (hit.gameObject.GetComponent<Rigidbody2D>() != null)
+            if (hit.gameObject.GetComponent<CatAI>() != null)
             {
                 // if we are facing it
                 if (facingRight && hit.gameObject.transform.position.x > this.transform.position.x ||
@@ -97,26 +95,38 @@ public class PlayerControl : MonoBehaviour
             }
         }
     }
+    [Header("Cat Stack Numbers")]
+    public float catDisplacementFromPlayer = 2.8f;
+    public float catDispalcementInStack = 0.02f;
 
     private void UpdateCatStack()
     {
+        // update player position
         for (int i = 0; i < catStack.Count; i++)
         {
             var catToMove = catStack.ToArray()[i];
-            var playerDisplacement = new Vector2(0.0f, (i + 1) * 0.25f);
-            //catToMove.transform.position = Mathf.Lerp(catToMove.transform.position, this.transform.position, 0.5f);
+            var playerDisplacement = catDisplacementFromPlayer + (catStack.Count - i + 1) * 0.5f;
+            var swayingXpos = Mathf.Lerp(catToMove.transform.position.x, this.transform.position.x, 0.2f -(catDispalcementInStack * (catStack.Count - i + 1)));
+            catToMove.transform.position = new Vector3(swayingXpos, this.transform.position.y + playerDisplacement, 0.0f); //Vector3.Lerp(catToMove.transform.position, playerDisplacement + this.transform.position, 0.2f - (0.03f * (i + 1)));
         }
     }
 
-    Stack<GameObject> catStack = new Stack<GameObject>();
+    [SerializeField]
+    public Stack<GameObject> catStack = new Stack<GameObject>();
     int maxCatCount = 3;
 
     private void StackCat(GameObject catToStack)
     {
+        Debug.Log("Attemping pickup");
         if (catStack.Count < maxCatCount)
         {
-            // disable cat AI
+            Debug.Log("pickupping");
+            catToStack.GetComponent<CatAI>().enabled = false;
+            catToStack.GetComponent<BoxCollider2D>().enabled = false;
+            catToStack.GetComponent<SpriteRenderer>().sortingOrder = 5;
             catStack.Push(catToStack);
+            anim.SetTrigger("Pickup");
+            anim.SetBool("HandsUp", true);
         }
 
 
