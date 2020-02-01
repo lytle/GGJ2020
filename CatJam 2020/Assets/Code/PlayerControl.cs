@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    public static PlayerControl instance;
-
+    public static PlayerControl instance = null;
     public BoxCollider2D boxCollider;
     public Transform spriteObject;
     public Animator anim;
@@ -23,11 +22,6 @@ public class PlayerControl : MonoBehaviour
     {
         if(instance == null)
         {
-            instance = this;
-        }
-        else
-        {
-            Destroy(instance.gameObject);
             instance = this;
         }
         boxCollider = GetComponentInChildren<BoxCollider2D>();
@@ -54,6 +48,7 @@ public class PlayerControl : MonoBehaviour
 
         this.transform.Translate(ourMoveDir * velocity * Time.deltaTime);
 
+        /*
         // restrict y movement
         if(this.transform.position.y > 5.0f)
         {
@@ -71,7 +66,7 @@ public class PlayerControl : MonoBehaviour
         else if (this.transform.position.x < -9.0f)
         {
             this.transform.position = new Vector3(-9.0f, this.transform.position.y);
-        }
+        }*/
 
         // Update rotation
         if((ourMoveDir.x > 0.0f && !facingRight) || (ourMoveDir.x < 0.0f && facingRight))
@@ -103,7 +98,8 @@ public class PlayerControl : MonoBehaviour
                 if (facingRight && hit.gameObject.transform.position.x > this.transform.position.x ||
                     !facingRight && hit.gameObject.transform.position.x < this.transform.position.x)
                 {
-                    if (isThrowing == null && Input.GetButtonDown("PickUp")) StackCat(hit.gameObject);
+                    Debug.Log("cat in range!");
+                    if (isThrowing == null && pickingUp == null && Input.GetButtonDown("PickUp")) StackCat(hit.gameObject);
                 }
 
             }
@@ -153,6 +149,8 @@ public class PlayerControl : MonoBehaviour
         isThrowing = null;
     }
 
+    private Coroutine pickingUp;
+
     private void StackCat(GameObject catToStack)
     {
         Debug.Log("Attemping pickup");
@@ -160,7 +158,7 @@ public class PlayerControl : MonoBehaviour
         {
             anim.SetTrigger("Pickup");
             anim.SetBool("HandsUp", true);
-            StartCoroutine(DelayedCatStack(catToStack, 0.15f));
+            pickingUp = StartCoroutine(DelayedCatStack(catToStack, 0.15f));
             
         }
     }
@@ -175,6 +173,7 @@ public class PlayerControl : MonoBehaviour
             sr.sortingOrder += 5;
         }
         catStack.Push(catToStack.transform.gameObject);
+        pickingUp = null;
     }
 
 
