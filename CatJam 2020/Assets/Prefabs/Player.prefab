@@ -48,10 +48,11 @@ MonoBehaviour:
   walkAcceleration: 75
   boxCollider: {fileID: 565951725002677578}
   spriteObject: {fileID: 3066897340021366934}
-  maxVel: 15
-  velocity: 40
-  accel: 0.5
-  decel: 0.25
+  anim: {fileID: 3066897340021366935}
+  maxVel: 9
+  velocity: 0
+  accel: 0.75
+  decel: 0.4
 --- !u!1 &6043633802646225456
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,7 +97,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -107,7 +108,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2, y: 1.5}
+  m_Size: {x: 2.4, y: 2}
   m_EdgeRadius: 0
 --- !u!1001 &5321491617851884952
 PrefabInstance:
@@ -196,6 +197,12 @@ PrefabInstance:
 --- !u!4 &3066897340021366934 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7158034616926315790, guid: 846b870c3bc7c0845aeda03582d4eb40,
+    type: 3}
+  m_PrefabInstance: {fileID: 5321491617851884952}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3066897340021366935 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7158034616926315791, guid: 846b870c3bc7c0845aeda03582d4eb40,
     type: 3}
   m_PrefabInstance: {fileID: 5321491617851884952}
   m_PrefabAsset: {fileID: 0}

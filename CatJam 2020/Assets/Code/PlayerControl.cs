@@ -30,8 +30,6 @@ public class PlayerControl : MonoBehaviour
         // Use GetAxisRaw to ensure our input is either 0, 1 or -1.
         ourMoveDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-        Debug.Log(ourMoveDir);
-
         // acceleration
         if(ourMoveDir != Vector2.zero)
         {
@@ -74,7 +72,7 @@ public class PlayerControl : MonoBehaviour
         }
 
         // Check for Cats.
-        //CheckForCats();
+        CheckForCats();
     }
 
     private void CheckForCats()
@@ -84,7 +82,7 @@ public class PlayerControl : MonoBehaviour
         foreach (Collider2D hit in hits)
         {
             // if its a cat
-            if (hit.gameObject.GetComponent<Rigidbody2D>() != null)
+            if (hit.gameObject.GetComponent<CatAI>() != null)
             {
                 // if we are facing it
                 if (facingRight && hit.gameObject.transform.position.x > this.transform.position.x ||
@@ -113,6 +111,7 @@ public class PlayerControl : MonoBehaviour
 
     private void StackCat(GameObject catToStack)
     {
+        Debug.Log("Attemping pickup");
         if (catStack.Count < maxCatCount)
         {
             // disable cat AI
