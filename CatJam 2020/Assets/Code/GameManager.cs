@@ -5,8 +5,15 @@ using UnityEngine.UI;
 
 enum State { menu, game, end };
 
+
 public class GameManager : MonoBehaviour
 {
+    public static GameManager singleton;
+
+    [SerializeField]
+    private GameObject catPrefab;
+    [SerializeField]
+    private GameObject censorCloud;
     [SerializeField]
     private Timer timer;
     [SerializeField]
@@ -15,6 +22,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (singleton == null)
+            singleton = this;
         state = State.menu;
     }
 
@@ -31,7 +40,7 @@ public class GameManager : MonoBehaviour
         {
             if (timer.timeRemaining > 0)
             {
-                timerText.text = timer.timeRemaining.ToString("#.00");
+                timerText.text = timer.timeRemaining.ToString("0.00");
                 timer.tick();
             }
             else
@@ -44,5 +53,23 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Game End State (SCOREBOARD?)");
         }
+    }
+    public void makeNewCat(Transform pos, GameObject momma, GameObject pappa)
+    {
+        momma.SetActive(false);
+        pappa.SetActive(false);
+        StartCoroutine(CatSex(pos, momma, pappa));
+    }
+
+    IEnumerator CatSex(Transform pos, GameObject momma, GameObject pappa)
+    {
+        GameObject cloud = GameObject.Instantiate(censorCloud, pos.position, Quaternion.identity);
+        yield return new WaitForSeconds(2f);
+        GameObject.Destroy(cloud);
+        //instantiate cats
+        //throw cats in random directions
+        momma.SetActive(true);
+        pappa.SetActive(true);
+        GameObject.Instantiate(catPrefab, pos.position, Quaternion.identity);
     }
 }
