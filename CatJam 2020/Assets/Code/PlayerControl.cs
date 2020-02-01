@@ -102,7 +102,6 @@ public class PlayerControl : MonoBehaviour
     private void UpdateCatStack()
     {
         // update player position
-
         for (int i = 0; i < catStack.Count; i++)
         {
             var catToMove = catStack.ToArray()[i];
@@ -121,10 +120,13 @@ public class PlayerControl : MonoBehaviour
         Debug.Log("Attemping pickup");
         if (catStack.Count < maxCatCount)
         {
+            Debug.Log("pickupping");
             catToStack.GetComponent<CatAI>().enabled = false;
             catToStack.GetComponent<BoxCollider2D>().enabled = false;
             catToStack.GetComponent<SpriteRenderer>().sortingOrder = 5;
             catStack.Push(catToStack);
+            anim.SetTrigger("Pickup");
+            anim.SetBool("HandsUp", true);
         }
 
 
