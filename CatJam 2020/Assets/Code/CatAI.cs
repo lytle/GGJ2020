@@ -123,10 +123,7 @@ public class CatAI : MonoBehaviour
             timer = Random.Range(0, 1.5f);
             
         }
-
         
-
-
         transform.localScale = new Vector3(sideDirection * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
 
         //Vector3 moveTow = Vector3.MoveTowards(transform.position, randomVec, speed * Time.deltaTime);

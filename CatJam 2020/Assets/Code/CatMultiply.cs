@@ -15,11 +15,6 @@ public class CatMultiply : MonoBehaviour
         catToCat = GetComponent<Collider2D>();
         CalmCat();
     }
-    private void OnEnable()
-    {
-        Debug.Log("WHAT");
-        CalmCat();
-    }
     // Update is called once per frame
     void Update()
     {
@@ -42,7 +37,6 @@ public class CatMultiply : MonoBehaviour
 
     public void CalmCat()
     {
-        Debug.Log("CALM");
         makeBaby = false;
         if(calmness != null)
         StopCoroutine(calmness);

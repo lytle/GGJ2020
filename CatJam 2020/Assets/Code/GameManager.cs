@@ -102,15 +102,16 @@ public class GameManager : MonoBehaviour
     IEnumerator CatSex(Vector3 pos, GameObject momma, GameObject pappa)
     {
         GameObject cloud = GameObject.Instantiate(censorCloud, pos, Quaternion.identity);
-        yield return new WaitForSeconds(2f);
-        GameObject.Destroy(cloud);
+        yield return new WaitForSeconds(1.35f);
         //instantiate cats
         //throw cats in random directions
         momma.SetActive(true);
         pappa.SetActive(true);
         GameObject newCat = GameObject.Instantiate(catPrefab, pos, Quaternion.identity);
-        sexingCats.Remove(momma);
-        sexingCats.Remove(pappa);
+
+        momma.GetComponent<CatMaster>().Throw(true, PlayerControl.instance.gameObject.transform.position.y);
+        pappa.GetComponent<CatMaster>().Throw(true, PlayerControl.instance.gameObject.transform.position.y);
+        newCat.GetComponent<CatMaster>().Throw(true, PlayerControl.instance.gameObject.transform.position.y);
     }
 
     public GameObject GetNewCat()
