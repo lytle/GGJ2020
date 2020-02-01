@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
@@ -89,7 +90,7 @@ public class PlayerControl : MonoBehaviour
                     !facingRight && hit.gameObject.transform.position.x < this.transform.position.x)
                 {
                     Debug.Log("cat in range!");
-                    if (Input.GetButton("PickUp")) StackCat(hit.gameObject);
+                    if (Input.GetButtonDown("PickUp")) StackCat(hit.gameObject);
                 }
 
             }
@@ -120,15 +121,25 @@ public class PlayerControl : MonoBehaviour
         Debug.Log("Attemping pickup");
         if (catStack.Count < maxCatCount)
         {
-            Debug.Log("pickupping");
-            catToStack.GetComponent<CatAI>().enabled = false;
-            catToStack.GetComponent<BoxCollider2D>().enabled = false;
-            catToStack.GetComponent<SpriteRenderer>().sortingOrder = 5;
-            catStack.Push(catToStack);
             anim.SetTrigger("Pickup");
             anim.SetBool("HandsUp", true);
+            StartCoroutine(DelayedCatStack(catToStack, 0.3f));
+            
         }
 
 
     }
+
+    IEnumerator DelayedCatStack(GameObject catToStack, float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        Debug.Log("pickupping");
+        catToStack.GetComponent<CatAI>().enabled = false;
+        catToStack.GetComponent<BoxCollider2D>().enabled = false;
+        catToStack.GetComponent<SpriteRenderer>().sortingOrder = 5;
+        catStack.Push(catToStack);
+    }
+
+
+
 }
