@@ -35,7 +35,10 @@ public class GameManager : MonoBehaviour
                 timer.tick();
             }
             else
+            {
+                timerText.text = "0.00";
                 state = State.end;
+            }
         }
         else if (state == State.end)
         {
