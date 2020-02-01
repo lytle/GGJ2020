@@ -120,6 +120,7 @@ public class PlayerControl : MonoBehaviour
         Debug.Log("Attemping pickup");
         if (catStack.Count < maxCatCount)
         {
+            Debug.Log("pickupping");
             catToStack.GetComponent<CatAI>().enabled = false;
             catToStack.GetComponent<BoxCollider2D>().enabled = false;
             catToStack.GetComponent<SpriteRenderer>().sortingOrder = 5;
