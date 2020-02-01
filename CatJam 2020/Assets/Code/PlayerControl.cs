@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    [SerializeField, Tooltip("Acceleration while grounded.")]
-    float walkAcceleration = 75;
-
     public BoxCollider2D boxCollider;
     public Transform spriteObject;
     public Animator anim;
@@ -73,6 +70,9 @@ public class PlayerControl : MonoBehaviour
 
         // Check for Cats.
         CheckForCats();
+
+        // Update Cat Stack
+        UpdateCatStack();
     }
 
     private void CheckForCats()
@@ -95,18 +95,25 @@ public class PlayerControl : MonoBehaviour
             }
         }
     }
+    [Header("Cat Stack Numbers")]
+    public float catDisplacementFromPlayer = 2.8f;
+    public float catDispalcementInStack = 0.02f;
 
     private void UpdateCatStack()
     {
+        // update player position
+
         for (int i = 0; i < catStack.Count; i++)
         {
             var catToMove = catStack.ToArray()[i];
-            var playerDisplacement = new Vector2(0.0f, (i + 1) * 0.25f);
-            //catToMove.transform.position = Mathf.Lerp(catToMove.transform.position, this.transform.position, 0.5f);
+            var playerDisplacement = catDisplacementFromPlayer + (catStack.Count - i + 1) * 0.5f;
+            var swayingXpos = Mathf.Lerp(catToMove.transform.position.x, this.transform.position.x, 0.2f -(catDispalcementInStack * (catStack.Count - i + 1)));
+            catToMove.transform.position = new Vector3(swayingXpos, this.transform.position.y + playerDisplacement, 0.0f); //Vector3.Lerp(catToMove.transform.position, playerDisplacement + this.transform.position, 0.2f - (0.03f * (i + 1)));
         }
     }
 
-    Stack<GameObject> catStack = new Stack<GameObject>();
+    [SerializeField]
+    public Stack<GameObject> catStack = new Stack<GameObject>();
     int maxCatCount = 3;
 
     private void StackCat(GameObject catToStack)
@@ -114,7 +121,9 @@ public class PlayerControl : MonoBehaviour
         Debug.Log("Attemping pickup");
         if (catStack.Count < maxCatCount)
         {
-            // disable cat AI
+            catToStack.GetComponent<CatAI>().enabled = false;
+            catToStack.GetComponent<BoxCollider2D>().enabled = false;
+            catToStack.GetComponent<SpriteRenderer>().sortingOrder = 5;
             catStack.Push(catToStack);
         }
 

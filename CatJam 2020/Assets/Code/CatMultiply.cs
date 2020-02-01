@@ -6,7 +6,6 @@ public class CatMultiply : MonoBehaviour
 {
     private PolygonCollider2D catToCat;
     public bool makeBaby;
-    public bool heatingUp;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,9 +28,10 @@ public class CatMultiply : MonoBehaviour
         Debug.Log("Entert");
         if(makeBaby)
         {
+            Debug.Log("InTHERE");
+            other.gameObject.GetComponent<CatMultiply>().makeBaby = false;
             GameObject me = transform.parent.gameObject;
             GameObject them = other.transform.parent.gameObject;
-            other.gameObject.GetComponent<CatMultiply>().makeBaby = false;
             them.SetActive(false);
 
             GameManager.singleton.makeNewCat(transform, me, them);
@@ -41,14 +41,13 @@ public class CatMultiply : MonoBehaviour
     private void CalmCat()
     {
         makeBaby = false;
-        heatingUp = true;
         StartCoroutine("MakeBabies");
+        Debug.Log("CALMING");
     }
 
     IEnumerator MakeBabies()
     {
         yield return new WaitForSeconds(3f);
         makeBaby = true;
-        heatingUp = false;
     }
 }
