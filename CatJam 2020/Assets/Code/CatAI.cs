@@ -15,26 +15,42 @@ public class CatAI : MonoBehaviour
     private int upDownDirection = 1;    // 1 is UP and -1 is DOWN
 
     private bool runningAround;
-    
 
+    private Vector2 initDir, finalDir;
+
+    private float curveTimerMax;
+
+    float timer = 2f;
 
     void Start()
     {
         
     }
     
-    void Update()
+    void FixedUpdate()
     {
-        Vector3 randomFactor = new Vector3(0f, Random.Range(-1f, 1f), 0f);
+        timer -= Time.deltaTime;
+
+        if (timer <= 0f)
+        {
+            timer = Random.Range(0, 4f);
+            curveTimerMax = timer;
+            initDir = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+            finalDir = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+        }
+
+        Vector2 curDir = Vector2.Lerp(initDir, finalDir, timer / curveTimerMax);
+        
 
         if (!DetectSideObstacle())
         {
-            transform.position += ((transform.right * sideDirection + transform.up * upDownDirection))/2 * speed * Time.deltaTime;
+            //transform.position += ((transform.right * sideDirection + transform.up * upDownDirection ))/2 * speed * Time.deltaTime;
+            transform.Translate(curDir * speed * Time.deltaTime);
         }
         else
         {
             sideDirection *= -1;        //CHANGE DIRECTION
-            FlipCat();     //Horizontal
+            FlipCat(); 
         }
 
 
@@ -49,11 +65,15 @@ public class CatAI : MonoBehaviour
 
         Debug.DrawRay(transform.position, transform.right * maxDistance * sideDirection, Color.blue);
 
-        foreach(RaycastHit2D hit in topHits)
+        Debug.DrawRay(transform.position, transform.up * maxDistance * upDownDirection, Color.red);
+
+
+        foreach (RaycastHit2D hit in topHits)
         {
             if (hit.transform.CompareTag("Wall"))
             {
                 upDownDirection *= -1;
+                Debug.Log("HIT TOP/BOTTOM");
             }
         }
 
@@ -61,6 +81,7 @@ public class CatAI : MonoBehaviour
         {
             if (hit.transform.CompareTag("Wall"))
             {
+                Debug.Log("HIT SIDE");
                 return true;
             }
         }
