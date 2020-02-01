@@ -34,7 +34,7 @@ public class CatMultiply : MonoBehaviour
         }
     }
 
-    private void CalmCat()
+    public void CalmCat()
     {
         makeBaby = false;
         StartCoroutine("MakeBabies");
