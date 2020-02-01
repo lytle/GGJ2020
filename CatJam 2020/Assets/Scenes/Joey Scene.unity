@@ -1030,6 +1030,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeartEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 2506501414523419169, guid: 5f8cb01bbf014e3449ab98258a5e815b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2506501414523419170, guid: 5f8cb01bbf014e3449ab98258a5e815b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1257,6 +1262,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Background
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828611355701286952, guid: c8906164758a96e4183834538a5be14b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828611355701286952, guid: c8906164758a96e4183834538a5be14b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828611355701286952, guid: c8906164758a96e4183834538a5be14b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828611355701286952, guid: c8906164758a96e4183834538a5be14b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828611355701286952, guid: c8906164758a96e4183834538a5be14b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828611355701286952, guid: c8906164758a96e4183834538a5be14b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8906164758a96e4183834538a5be14b, type: 3}
