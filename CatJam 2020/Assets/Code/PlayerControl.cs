@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider2D))]
 public class PlayerControl : MonoBehaviour
 {
     [SerializeField, Tooltip("Acceleration while grounded.")]
@@ -68,7 +68,12 @@ public class PlayerControl : MonoBehaviour
             ourSprite.flipX = !ourSprite.flipX;
         }
 
-        // Retrieve all colliders we have intersected after velocity has been applied.
+        // Check for Cats.
+        CheckForCats();
+    }
+
+    private void CheckForCats()
+    {
         Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, boxCollider.size, 0);
 
         foreach (Collider2D hit in hits)
@@ -79,19 +84,36 @@ public class PlayerControl : MonoBehaviour
                 // if we are facing it
                 if (facingRight && hit.gameObject.transform.position.x > this.transform.position.x ||
                     !facingRight && hit.gameObject.transform.position.x < this.transform.position.x)
-                    Debug.Log("cat!");
-
-                //ColliderDistance2D colliderDistance = hit.Distance(boxCollider);
-
-                /*// Ensure that we are still overlapping this collider.
-                // The overlap may no longer exist due to another intersected collider
-                // pushing us out of this one.
-                if (colliderDistance.isOverlapped)
                 {
-                    transform.Translate(colliderDistance.pointA - colliderDistance.pointB);
+                    Debug.Log("cat in range!");
+                    if (Input.GetButton("PickUp")) StackCat(hit.gameObject);
+                }
 
-                }*/
             }
         }
+    }
+
+    private void UpdateCatStack()
+    {
+        for (int i = 0; i < catStack.Count; i++)
+        {
+            var catToMove = catStack.ToArray()[i];
+            var playerDisplacement = new Vector2(0.0f, (i + 1) * 0.25f);
+            //catToMove.transform.position = Mathf.Lerp(catToMove.transform.position, this.transform.position, 0.5f);
+        }
+    }
+
+    Stack<GameObject> catStack = new Stack<GameObject>();
+    int maxCatCount = 3;
+
+    private void StackCat(GameObject catToStack)
+    {
+        if (catStack.Count < maxCatCount)
+        {
+            // disable cat AI
+            catStack.Push(catToStack);
+        }
+
+
     }
 }
