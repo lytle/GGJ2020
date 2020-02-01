@@ -29,6 +29,8 @@ public class PlayerControl : MonoBehaviour
         // Use GetAxisRaw to ensure our input is either 0, 1 or -1.
         ourMoveDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
+        Debug.Log(ourMoveDir);
+
         // acceleration
         if(ourMoveDir != Vector2.zero)
         {
@@ -69,7 +71,7 @@ public class PlayerControl : MonoBehaviour
         }
 
         // Check for Cats.
-        CheckForCats();
+        //CheckForCats();
     }
 
     private void CheckForCats()
