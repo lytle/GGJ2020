@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class CatMultiply : MonoBehaviour
 {
-    private Collider2D catToCat;
     public bool makeBaby;
+
     [SerializeField]
     private float breedDelay = 3f;
+    [SerializeField]
+    private GameObject sexyAura;
+
     private Coroutine calmness;
+
     // Start is called before the first frame update
     void Start()
     {
-        catToCat = GetComponent<Collider2D>();
         CalmCat();
     }
     // Update is called once per frame
@@ -38,6 +41,7 @@ public class CatMultiply : MonoBehaviour
     public void CalmCat()
     {
         makeBaby = false;
+        sexyAura.SetActive(false);
         if(calmness != null)
         StopCoroutine(calmness);
         calmness = StartCoroutine("BecomeSexy");
@@ -48,6 +52,7 @@ public class CatMultiply : MonoBehaviour
         float timeToSex = Random.Range(5f, 10f);
         yield return new WaitForSeconds(timeToSex);
         makeBaby = true;
+        sexyAura.SetActive(true);
         GameManager.singleton.AddHornyCat(this.gameObject);
         Debug.Log("adding cat");
     }

@@ -32,7 +32,8 @@ public class CatAI : MonoBehaviour
         NormalCat = 0,
         LazyCat = 1,
         RunAwayCat = 2,
-        UwuCat = 3
+        UwuCat = 3,
+        BabyCat = 4
     }
 
     private CatType _type;
@@ -62,6 +63,11 @@ public class CatAI : MonoBehaviour
                 case CatType.UwuCat:
                     {
                         uwuCat = true;
+                        break;
+                    }
+                case CatType.BabyCat:
+                    {
+                        transform.localScale /= 2;
                         break;
                     }
             }
@@ -160,6 +166,15 @@ public class CatAI : MonoBehaviour
 
         transform.localScale = new Vector3(sideDirection * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
 
+    }
+
+    private IEnumerator MakeBabyBigger()
+    {
+        while(transform.localScale.y < 1)
+        {
+            transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one, 0.3f);
+            yield return new WaitForEndOfFrame();
+        }
     }
 
 
