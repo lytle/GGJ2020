@@ -27,7 +27,7 @@ public class CatMultiply : MonoBehaviour
 
 /*    private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("Collide with " + other.gameObject.name);
+
         if(other.gameObject.GetComponent<CatMultiply>() && makeBaby && other.gameObject.tag.Equals("Cat") && other.gameObject.GetComponent<CatMultiply>().makeBaby)
         {
             Debug.Log("Multiply");

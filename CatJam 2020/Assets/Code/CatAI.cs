@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class CatAI : MonoBehaviour
 {
-
-    public float maxDistance;
+    
 
     public float speed;
 
     private bool facingRight;
 
     private int sideDirection = -1;     // 1 is RIGHT and -1 is LEFT
-    private int upDownDirection = 1;    // 1 is UP and -1 is DOWN
 
     private bool runningAround;
 
@@ -24,19 +24,65 @@ public class CatAI : MonoBehaviour
 
     public Vector2 min, max;
 
+    private bool runAwayCat, uwuCat;
+
+
+    public enum CatType
+    {
+        NormalCat = 0,
+        LazyCat = 1,
+        RunAwayCat = 2,
+        UwuCat = 3
+    }
+
+    private CatType _type;
+
+    public CatType type
+    {
+        get { return _type; }
+        set
+        {
+            _type = value;
+            switch (_type)
+            {
+                case CatType.NormalCat:
+                    {
+                        break;
+                    }
+                case CatType.LazyCat:
+                    {
+                        speed /= 2;
+                        break;
+                    }
+                case CatType.RunAwayCat:
+                    {
+                        runAwayCat = true;
+                        break;
+                    }
+                case CatType.UwuCat:
+                    {
+                        uwuCat = true;
+                        break;
+                    }
+            }
+        }
+    }
 
 
     void Start()
     {
-        
+        type = (CatType) Random.Range(0, 4);
     }
     
     void FixedUpdate()
     {
         timer -= Time.deltaTime;
+
         if(timer <= 0)
         {
+
             randomVec = new Vector3(Random.Range(min.x, max.x), Random.Range(min.y, max.y), 0f);
+
             if (transform.position.x < randomVec.x)
             {
                 sideDirection = 1;
@@ -46,15 +92,46 @@ public class CatAI : MonoBehaviour
                 sideDirection = -1;
             }
 
-            transform.localScale = new Vector3(sideDirection * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            if (runAwayCat && (transform.position - PlayerControl.instance.transform.position).sqrMagnitude < 20f)
+            {
+                if (PlayerControl.instance.facingRight)
+                {
+                    sideDirection = 1;
+                }
+                else
+                {
+                    sideDirection = -1;
+                }
 
-            timer = Random.Range(0, Mathf.Abs(randomVec.magnitude)/2);
+                randomVec += PlayerControl.instance.transform.right * sideDirection * 10f;
+            }
+
+            if(uwuCat && (transform.position - PlayerControl.instance.transform.position).sqrMagnitude > 20f)
+            {
+                if (PlayerControl.instance.facingRight)
+                {
+                    sideDirection = -1;
+                }
+                else
+                {
+                    sideDirection = 1;
+                }
+
+                randomVec = PlayerControl.instance.transform.position;
+            }
+
+            timer = Random.Range(0, 1.5f);
             
         }
-        
-        Vector3 moveTow = Vector3.MoveTowards(transform.position, randomVec, speed * Time.deltaTime);
 
-        transform.position = Vector3.Slerp(transform.position, moveTow, Time.deltaTime);
+        
+
+
+        transform.localScale = new Vector3(sideDirection * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+
+        //Vector3 moveTow = Vector3.MoveTowards(transform.position, randomVec, speed * Time.deltaTime);
+
+        transform.position = Vector3.Lerp(transform.position, randomVec, speed * Time.deltaTime);
 
 /*        if (!DetectSideObstacle())
         {
@@ -73,6 +150,23 @@ public class CatAI : MonoBehaviour
 
     }
 
+    public void ChangeDir(bool right)
+    {
+        if (right)
+        {
+            sideDirection = 1;
+        }
+        else
+        {
+            sideDirection = -1;
+        }
+
+        transform.localScale = new Vector3(sideDirection * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+
+    }
+
+
+    /*
 
     public bool DetectSideObstacle()
     {
@@ -105,10 +199,12 @@ public class CatAI : MonoBehaviour
 
     
 
+    
+
     public void FlipCat()
     {
         GetComponent<SpriteRenderer>().flipX = !GetComponent<SpriteRenderer>().flipX;
     }
 
-
+    */
 }
