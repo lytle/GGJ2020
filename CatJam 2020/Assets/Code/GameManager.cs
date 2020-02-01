@@ -56,13 +56,13 @@ public class GameManager : MonoBehaviour
             {
                 GameObject cat = hornyCats[i];
                 CatMultiply firstCatGenitals = cat.GetComponent<CatMultiply>();
-                if (firstCatGenitals.makeBaby)
+                if (firstCatGenitals.enabled && firstCatGenitals.makeBaby)
                 for (int j = i + 1; j < hornyCats.Count; j++)
                 {
                     counter++;
                     GameObject otherCat = hornyCats[j];
                     CatMultiply secondCatGenitals = otherCat.GetComponent<CatMultiply>();
-                    if (secondCatGenitals.makeBaby)
+                    if (secondCatGenitals.enabled && secondCatGenitals.makeBaby)
                     {  
                         if (Vector2.Distance(cat.transform.position, otherCat.transform.position) < .6f)
                         {
