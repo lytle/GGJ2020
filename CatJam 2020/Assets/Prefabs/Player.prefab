@@ -40,6 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7215408869486218927}
   - component: {fileID: 5374420808764323318}
+  - component: {fileID: 1356164318418349641}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -83,8 +84,30 @@ MonoBehaviour:
   velocity: 0
   accel: 0.75
   decel: 0.4
+  facingRight: 0
   catDisplacementFromPlayer: 1.47
   catDispalcementInStack: 0.02
+--- !u!50 &1356164318418349641
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5335345790382322301}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &6043633802646225456
 GameObject:
   m_ObjectHideFlags: 0

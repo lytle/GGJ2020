@@ -87,10 +87,7 @@ public class PlayerControl : MonoBehaviour
 
     private void CheckForCats()
     {
-        Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, boxCollider.size, 0);
-
-        foreach (Collider2D hit in hits)
-        {
+        Collider2D hit = Physics2D.OverlapBox(transform.position, boxCollider.size, 0);
             // if its a cat
             if (hit.transform.root.gameObject.GetComponent<CatAI>() != null)
             {
@@ -103,7 +100,6 @@ public class PlayerControl : MonoBehaviour
                 }
 
             }
-        }
     }
     [Header("Cat Stack Numbers")]
     public float catDisplacementFromPlayer = 2.8f;

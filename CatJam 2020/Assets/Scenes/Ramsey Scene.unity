@@ -483,36 +483,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdf7dca7803b7d04ab767e939aa40271, type: 3}
---- !u!1 &937771042
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 937771043}
-  m_Layer: 0
-  m_Name: CameraCenter
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &937771043
+--- !u!4 &946166773 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 937771043, guid: 662c8e65dd0db84489461578503fc461,
+    type: 3}
+  m_PrefabInstance: {fileID: 5716308476629584021}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 937771042}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.47, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1809237333}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1224240381
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -630,7 +606,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 937771043}
+  m_Follow: {fileID: 946166773}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 7.5
@@ -855,12 +831,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e010202f3de6aa42b2700bb79d3577f, type: 3}
---- !u!4 &1809237333 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7215408869486218927, guid: 662c8e65dd0db84489461578503fc461,
-    type: 3}
-  m_PrefabInstance: {fileID: 5716308476629584021}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1817677555 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4149685457426975623, guid: 93635f2a3c4d7f840b96ec9e15b939f0,
@@ -906,6 +876,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 937771043, guid: 662c8e65dd0db84489461578503fc461, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 637484191493693254, guid: 662c8e65dd0db84489461578503fc461,
         type: 3}
       propertyPath: m_ApplyRootMotion
@@ -920,6 +894,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6115046418140553621, guid: 662c8e65dd0db84489461578503fc461,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7215408869486218927, guid: 662c8e65dd0db84489461578503fc461,
         type: 3}
