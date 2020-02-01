@@ -86,7 +86,7 @@ public class PlayerControl : MonoBehaviour
         foreach (Collider2D hit in hits)
         {
             // if its a cat
-            if (hit.gameObject.GetComponent<CatAI>() != null)
+            if (hit.transform.root.gameObject.GetComponent<CatAI>() != null)
             {
                 // if we are facing it
                 if (facingRight && hit.gameObject.transform.position.x > this.transform.position.x ||
@@ -158,10 +158,14 @@ public class PlayerControl : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         Debug.Log("pickupping");
-        catToStack.GetComponent<CatAI>().enabled = false;
-        catToStack.GetComponent<BoxCollider2D>().enabled = false;
+        catToStack.transform.root.gameObject.GetComponent<CatAI>().enabled = false;
+        Collider2D[] colliders = catToStack.GetComponents<Collider2D>();
+        foreach(Collider2D collider in colliders)
+        {
+            collider.enabled = false;
+        }
         catToStack.GetComponent<SpriteRenderer>().sortingOrder = 5;
-        catStack.Push(catToStack);
+        catStack.Push(catToStack.transform.root.gameObject);
     }
 
 
