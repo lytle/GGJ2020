@@ -23,7 +23,7 @@ public class CatMultiply : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(makeBaby && other.tag.Equals("Cat"))
+        if(other.gameObject.GetComponent<CatMultiply>() && makeBaby && other.tag.Equals("Cat") && other.gameObject.GetComponent<CatMultiply>().makeBaby)
         {
             other.gameObject.GetComponent<CatMultiply>().makeBaby = false;
             GameObject me = transform.parent.gameObject;
