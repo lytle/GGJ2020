@@ -191,7 +191,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8924235004865250528}
   - component: {fileID: 2076493495562831403}
-  - component: {fileID: 8316870630576093790}
   - component: {fileID: 1126494059248314363}
   m_Layer: 0
   m_Name: BabyMaker
@@ -275,27 +274,6 @@ PolygonCollider2D:
       - {x: -0.648, y: -0.632}
       - {x: -0.532, y: -0.74}
       - {x: -0.40800002, y: -0.776}
---- !u!50 &8316870630576093790
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4630321786597840989}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!114 &1126494059248314363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,4 +287,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   makeBaby: 0
-  heatingUp: 0
