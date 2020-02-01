@@ -43,6 +43,7 @@ public class PlayerControl : MonoBehaviour
 
         this.transform.Translate(ourMoveDir * velocity * Time.deltaTime);
 
+        /*
         // restrict y movement
         if(this.transform.position.y > 5.0f)
         {
@@ -60,7 +61,7 @@ public class PlayerControl : MonoBehaviour
         else if (this.transform.position.x < -9.0f)
         {
             this.transform.position = new Vector3(-9.0f, this.transform.position.y);
-        }
+        }*/
 
         // Update rotation
         if((ourMoveDir.x > 0.0f && !facingRight) || (ourMoveDir.x < 0.0f && facingRight))
