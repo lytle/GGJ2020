@@ -38,8 +38,16 @@ public class CatAI : MonoBehaviour
         {
             randomVec = new Vector3(Random.Range(min.x, max.x), Random.Range(min.y, max.y), 0f);
             if (transform.position.x < randomVec.x)
-                transform.localScale = new Vector3(-1*transform.localScale.x, transform.localScale.y, transform.localScale.z);
-            
+            {
+                sideDirection = 1;
+            }
+            else
+            {
+                sideDirection = -1;
+            }
+
+            transform.localScale = new Vector3(sideDirection * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+
             timer = Random.Range(0, Mathf.Abs(randomVec.magnitude)/2);
             
         }
@@ -48,19 +56,19 @@ public class CatAI : MonoBehaviour
 
         transform.position = Vector3.Slerp(transform.position, moveTow, Time.deltaTime);
 
-        if (!DetectSideObstacle())
+/*        if (!DetectSideObstacle())
         {
-            /*
+            *//*
             //transform.position += ((transform.right * sideDirection + transform.up * upDownDirection ))/2 * speed * Time.deltaTime;
             transform.Translate((transform.right * sideDirection + curDir * upDownDirection)/2 * speed * Time.deltaTime);
-            */
+            *//*
         }
 
         else
         {
             sideDirection *= -1;        //CHANGE DIRECTION
             FlipCat(); 
-        }
+        }*/
 
 
     }

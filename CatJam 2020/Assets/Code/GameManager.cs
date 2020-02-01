@@ -1,7 +1,6 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 enum State { menu, game, end };
 
@@ -20,7 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Timer timer;
     [SerializeField]
-    private Text timerText;
+    private UnityEngine.UI.Text timerText;
     State state;
     // Start is called before the first frame update
     void Start()
@@ -55,25 +54,27 @@ public class GameManager : MonoBehaviour
         {
         }
     }
-    public void makeNewCat(Transform pos, GameObject momma, GameObject pappa)
+    public void makeNewCat(Vector3 pos, GameObject momma, GameObject pappa)
     {
         momma.SetActive(false);
         pappa.SetActive(false);
         StartCoroutine(CatSex(pos, momma, pappa));
     }
 
-    IEnumerator CatSex(Transform pos, GameObject momma, GameObject pappa)
+    IEnumerator CatSex(Vector3 pos, GameObject momma, GameObject pappa)
     {
-        GameObject cloud = GameObject.Instantiate(censorCloud, pos.position, Quaternion.identity);
+        GameObject cloud = GameObject.Instantiate(censorCloud, pos, Quaternion.identity);
         yield return new WaitForSeconds(2f);
         GameObject.Destroy(cloud);
         //instantiate cats
         //throw cats in random directions
         momma.SetActive(true);
         pappa.SetActive(true);
-        GameObject newCat = GameObject.Instantiate(catPrefab, pos.position, Quaternion.identity);
-        GameObject visuals = catFactory.GenerateRandomCat();
-        visuals.transform.parent = newCat.transform;
-        visuals.transform.localPosition = Vector3.zero;
+        GameObject newCat = GameObject.Instantiate(catPrefab, pos, Quaternion.identity);
+    }
+
+    public GameObject GetNewCat()
+    {
+        return catFactory.GenerateRandomCat();
     }
 }

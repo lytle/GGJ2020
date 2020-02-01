@@ -6,6 +6,8 @@ public class CatMultiply : MonoBehaviour
 {
     private PolygonCollider2D catToCat;
     public bool makeBaby;
+    [SerializeField]
+    private float breedDelay = 3f;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,11 +28,11 @@ public class CatMultiply : MonoBehaviour
         if(other.gameObject.GetComponent<CatMultiply>() && makeBaby && other.tag.Equals("Cat") && other.gameObject.GetComponent<CatMultiply>().makeBaby)
         {
             other.gameObject.GetComponent<CatMultiply>().makeBaby = false;
-            GameObject me = transform.parent.gameObject;
-            GameObject them = other.transform.parent.gameObject;
+            GameObject me = transform.root.gameObject;
+            GameObject them = other.transform.root.gameObject;
             them.SetActive(false);
 
-            GameManager.singleton.makeNewCat(transform, me, them);
+            GameManager.singleton.makeNewCat(transform.position, me, them);
         }
     }
 
@@ -42,7 +44,7 @@ public class CatMultiply : MonoBehaviour
 
     IEnumerator MakeBabies()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(breedDelay);
         makeBaby = true;
     }
 }
