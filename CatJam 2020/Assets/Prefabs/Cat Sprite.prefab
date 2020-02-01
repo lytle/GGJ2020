@@ -10,9 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2976399040671094432}
   - component: {fileID: 2405460175227675415}
-  - component: {fileID: 5110337510747778481}
-  - component: {fileID: 4110672477055944277}
-  - component: {fileID: 3687886356811925305}
   m_Layer: 0
   m_Name: Body
   m_TagString: Cat
@@ -84,52 +81,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5110337510747778481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1789299793528580759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b80a4e8b9acf6614ab9bb18a7e289d9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  makeBaby: 0
-  breedDelay: 8
---- !u!70 &4110672477055944277
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1789299793528580759}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.000000009201467, y: 1.235}
-  m_Size: {x: 4.36, y: 2.19}
-  m_Direction: 1
---- !u!70 &3687886356811925305
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1789299793528580759}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.000000009201467, y: 1.235}
-  m_Size: {x: 4.36, y: 2.19}
-  m_Direction: 1
 --- !u!1 &2959754238946781705
 GameObject:
   m_ObjectHideFlags: 0

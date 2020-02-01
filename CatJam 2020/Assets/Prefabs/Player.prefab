@@ -52,7 +52,7 @@ MonoBehaviour:
   velocity: 0
   accel: 0.75
   decel: 0.4
-  catDisplacementFromPlayer: 2.08
+  catDisplacementFromPlayer: 1.47
   catDispalcementInStack: 0.02
 --- !u!1 &6043633802646225456
 GameObject:
