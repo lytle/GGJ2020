@@ -878,11 +878,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5374420808764323318, guid: 662c8e65dd0db84489461578503fc461,
-        type: 3}
-      propertyPath: catDisplacementFromPlayer
-      value: 1.47
-      objectReference: {fileID: 0}
     - target: {fileID: 7215408869486218927, guid: 662c8e65dd0db84489461578503fc461,
         type: 3}
       propertyPath: m_LocalPosition.x
