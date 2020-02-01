@@ -51,31 +51,32 @@ public class GameManager : MonoBehaviour
                // timerText.text = timer.timeRemaining.ToString("0.00");
                 //timer.tick();
 
-            foreach(GameObject cat in hornyCats)
+            for(int i = 0; i < hornyCats.Count-1; i++)
             {
-                if (sexingCats.Contains(cat))
-                    continue;
-                foreach(GameObject otherCat in hornyCats)
+                GameObject cat = hornyCats[i];
+                if (cat.GetComponent<CatMultiply>().makeBaby)
+                for (int j = i + 1; j < hornyCats.Count; j++)
                 {
+                    GameObject otherCat = hornyCats[j];
                     Debug.Log("RWO)");
-                    if (cat == otherCat || sexingCats.Contains(otherCat))
-                        continue;
-                    else
-                    {
+                    if (otherCat.GetComponent<CatMultiply>().makeBaby)
+                    {  
                         Debug.Log("CHe kicng two cats");
-                        Debug.Log(Vector3.Distance(cat.transform.position, otherCat.transform.position));
-                        if (Vector3.Distance(cat.transform.position, otherCat.transform.position) < .3f)
+                        if (Vector3.Distance(cat.transform.position, otherCat.transform.position) < .6f)
                         {
+                            cat.GetComponent<CatMultiply>().makeBaby = false;
+                            otherCat.GetComponent<CatMultiply>().makeBaby = false;
                             makeNewCat((cat.transform.position + otherCat.transform.position) / 2, cat, otherCat);
-                            sexingCats.Add(cat);
-                            sexingCats.Add(otherCat);
                         }
                     }
                 }
             }
 
-            foreach (GameObject cat in sexingCats)
-                hornyCats.Remove(cat);
+            for(int i = hornyCats.Count-1; i >= 0; i--)
+            {
+                if (!hornyCats[i].GetComponent<CatMultiply>().makeBaby)
+                    hornyCats.RemoveAt(i);
+            }
            // }
             //else
            // {

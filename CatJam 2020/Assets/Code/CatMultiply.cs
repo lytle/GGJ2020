@@ -8,6 +8,7 @@ public class CatMultiply : MonoBehaviour
     public bool makeBaby;
     [SerializeField]
     private float breedDelay = 3f;
+    private Coroutine calmness;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,7 @@ public class CatMultiply : MonoBehaviour
     }
     private void OnEnable()
     {
+        Debug.Log("WHAT");
         CalmCat();
     }
     // Update is called once per frame
@@ -40,8 +42,11 @@ public class CatMultiply : MonoBehaviour
 
     public void CalmCat()
     {
+        Debug.Log("CALM");
         makeBaby = false;
-        StartCoroutine("BecomeSexy");
+        if(calmness != null)
+        StopCoroutine(calmness);
+        calmness = StartCoroutine("BecomeSexy");
     }
 
     IEnumerator BecomeSexy()
@@ -50,5 +55,6 @@ public class CatMultiply : MonoBehaviour
         yield return new WaitForSeconds(timeToSex);
         makeBaby = true;
         GameManager.singleton.AddHornyCat(this.gameObject);
+        Debug.Log("adding cat");
     }
 }
