@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 392825032957184035}
   m_Layer: 0
   m_Name: Cat
-  m_TagString: Untagged
+  m_TagString: Cat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,7 +159,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 0.5
-  speed: 4
+  speed: 100
+  min: {x: -6, y: -4}
+  max: {x: 6, y: 4}
 --- !u!50 &392825032957184035
 Rigidbody2D:
   serializedVersion: 4
@@ -194,7 +196,7 @@ GameObject:
   - component: {fileID: 1126494059248314363}
   m_Layer: 0
   m_Name: BabyMaker
-  m_TagString: Untagged
+  m_TagString: Cat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

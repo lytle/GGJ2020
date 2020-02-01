@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour
     {
         if (state == State.menu)
         {
-            Debug.Log("In Menu");
             if (Input.GetKeyDown(KeyCode.G))
                 state = State.game;
         }
@@ -54,7 +53,6 @@ public class GameManager : MonoBehaviour
         }
         else if (state == State.end)
         {
-            Debug.Log("Game End State (SCOREBOARD?)");
         }
     }
     public void makeNewCat(Transform pos, GameObject momma, GameObject pappa)
