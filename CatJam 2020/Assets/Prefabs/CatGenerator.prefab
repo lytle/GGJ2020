@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c12778c2cb4b31459a23e4266addfc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CatPrefab: {fileID: 5572449458689693300, guid: b1f06220142e03d4aa29fa3f36a435ce,
+  CatPrefab: {fileID: 6326056811582443079, guid: 65d4251c7b9dd0747bab2a7ea1e86c40,
     type: 3}
   Bodies:
   - {fileID: 21300000, guid: 6658ec7ad2eda9c4b920ee1b1bbc0eb1, type: 3}
@@ -90,4 +90,3 @@ MonoBehaviour:
   - {r: 1, g: 0.8145524, b: 0.4764151, a: 1}
   - {r: 0.7269046, g: 0.6047526, b: 0.8490566, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
-  - {r: 0.6431373, g: 0.29234475, b: 0, a: 1}
