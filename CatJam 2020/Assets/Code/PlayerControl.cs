@@ -15,6 +15,10 @@ public class PlayerControl : MonoBehaviour
     public float accel = 0.2f;
     public float decel = 0.75f;
 
+    //Audio for throwing
+    public AudioSource throwAudioSource;
+    public AudioClip[] throwAudioClips;
+
     public bool facingRight = false;
     private Vector2 ourMoveDir;
 
@@ -130,6 +134,9 @@ public class PlayerControl : MonoBehaviour
         {
             anim.SetBool("HandsUp", false);
             isThrowing = StartCoroutine("ThrowAllCats");
+            //Audio for throwing
+            throwAudioSource.clip = throwAudioClips[Random.Range(0, throwAudioClips.Length)];
+            throwAudioSource.Play();
         }
     }
     IEnumerator ThrowAllCats()
