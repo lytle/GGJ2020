@@ -74,6 +74,9 @@ public class PlayerControl : MonoBehaviour
 
         // Update Cat Stack
         UpdateCatStack();
+
+        // Check for throw
+        if (Input.GetButton("Drop")) ThrowCats();
     }
 
     private void CheckForCats()
@@ -90,7 +93,7 @@ public class PlayerControl : MonoBehaviour
                     !facingRight && hit.gameObject.transform.position.x < this.transform.position.x)
                 {
                     Debug.Log("cat in range!");
-                    if (Input.GetButtonDown("PickUp")) StackCat(hit.gameObject);
+                    if (isThrowing == null && Input.GetButtonDown("PickUp")) StackCat(hit.gameObject);
                 }
 
             }
@@ -99,6 +102,8 @@ public class PlayerControl : MonoBehaviour
     [Header("Cat Stack Numbers")]
     public float catDisplacementFromPlayer = 2.8f;
     public float catDispalcementInStack = 0.02f;
+
+    private Coroutine isThrowing;
 
     private void UpdateCatStack()
     {
@@ -116,6 +121,27 @@ public class PlayerControl : MonoBehaviour
     public Stack<GameObject> catStack = new Stack<GameObject>();
     int maxCatCount = 3;
 
+    private void ThrowCats()
+    {
+        Debug.Log("Throwing cats");
+        if (catStack.Count > 0)
+        {
+            isThrowing = StartCoroutine("ThrowAllCats");
+        }
+    }
+    IEnumerator ThrowAllCats()
+    {
+        while(catStack.Count > 0)
+        {
+            var catToThrow = catStack.Pop();
+            //catToThrow.GetComponent<CatMaster>().Throw(facingRight);
+            anim.SetTrigger("Drop");
+            yield return new WaitForSeconds(0.3f);
+        }
+        anim.SetBool("HandsUp", false);
+        isThrowing = null;
+    }
+
     private void StackCat(GameObject catToStack)
     {
         Debug.Log("Attemping pickup");
@@ -123,11 +149,9 @@ public class PlayerControl : MonoBehaviour
         {
             anim.SetTrigger("Pickup");
             anim.SetBool("HandsUp", true);
-            StartCoroutine(DelayedCatStack(catToStack, 0.3f));
+            StartCoroutine(DelayedCatStack(catToStack, 0.15f));
             
         }
-
-
     }
 
     IEnumerator DelayedCatStack(GameObject catToStack, float duration)
