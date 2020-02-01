@@ -164,7 +164,10 @@ public class PlayerControl : MonoBehaviour
         {
             collider.enabled = false;
         }
-        catToStack.GetComponent<SpriteRenderer>().sortingOrder = 5;
+        foreach(SpriteRenderer sr in catToStack.transform.parent.GetComponentsInChildren<SpriteRenderer>())
+        {
+            sr.sortingOrder += 5;
+        }
         catStack.Push(catToStack.transform.root.gameObject);
     }
 
