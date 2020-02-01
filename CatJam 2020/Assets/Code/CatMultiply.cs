@@ -14,21 +14,17 @@ public class CatMultiply : MonoBehaviour
     }
     private void OnEnable()
     {
-        //setDir();
         CalmCat();
     }
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("checking");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Entert");
         if(makeBaby && other.tag.Equals("Cat"))
         {
-            Debug.Log("InTHERE");
             other.gameObject.GetComponent<CatMultiply>().makeBaby = false;
             GameObject me = transform.parent.gameObject;
             GameObject them = other.transform.parent.gameObject;
@@ -42,7 +38,6 @@ public class CatMultiply : MonoBehaviour
     {
         makeBaby = false;
         StartCoroutine("MakeBabies");
-        Debug.Log("CALMING");
     }
 
     IEnumerator MakeBabies()
