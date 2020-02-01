@@ -37,7 +37,8 @@ public class CatAI : MonoBehaviour
         if(timer <= 0)
         {
             randomVec = new Vector3(Random.Range(min.x, max.x), Random.Range(min.y, max.y), 0f);
-            GetComponent<SpriteRenderer>().flipX = transform.position.x < randomVec.x;
+            if (transform.position.x < randomVec.x)
+                transform.localScale = new Vector3(-1*transform.localScale.x, transform.localScale.y, transform.localScale.z);
             
             timer = Random.Range(0, Mathf.Abs(randomVec.magnitude)/2);
             
