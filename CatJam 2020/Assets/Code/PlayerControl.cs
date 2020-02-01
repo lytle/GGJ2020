@@ -164,10 +164,10 @@ public class PlayerControl : MonoBehaviour
         yield return new WaitForSeconds(duration);
         Debug.Log("pickupping");
         catToStack.GetComponent<CatMaster>().GotPickedUp();
-        foreach(SpriteRenderer sr in catToStack.transform.GetComponentsInChildren<SpriteRenderer>())
+        /*foreach(SpriteRenderer sr in catToStack.transform.GetComponentsInChildren<SpriteRenderer>())
         {
             sr.sortingOrder += 5;
-        }
+        }*/
         catStack.Push(catToStack.transform.gameObject);
         pickingUp = null;
     }
