@@ -55,6 +55,7 @@ public class CatMultiply : MonoBehaviour
     public void WashCat()
     {
         smelly = false;
+        smellyAura.SetActive(false);
         calmness = StartCoroutine("BecomeSexy");
     }
 

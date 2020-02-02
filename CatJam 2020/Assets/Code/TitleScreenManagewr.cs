@@ -31,20 +31,12 @@ public class TitleScreenManagewr : MonoBehaviour
         }
         else if (leaving)
         {
-            StartCoroutine(FadeOutAudio(audioSource, 2f));
+            StartCoroutine(FadeOutAudio(audioSource, 1.5f));
             StartCoroutine(FadeEffect());
             leaving = false;
         }
 
         this.GetComponent<CanvasRenderer>().SetAlpha(0.5f * (Mathf.Sin(5f * Time.time) + 0.75f));
-    }
-
-    IEnumerator LoadGame()
-    {
-        yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("Ramsey Scene", LoadSceneMode.Single); 
-        Debug.Log("meow meow");
-        yield return null;
     }
 
     IEnumerator FadeEffect()
