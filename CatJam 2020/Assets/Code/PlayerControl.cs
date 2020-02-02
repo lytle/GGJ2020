@@ -123,7 +123,7 @@ public class PlayerControl : MonoBehaviour
 
     private void CheckForCats()
     {
-        Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, boxCollider.size, 0);
+        Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, boxCollider.size*1.1f, 0);
         // if its a cat
         foreach (var hit in hits)
         {

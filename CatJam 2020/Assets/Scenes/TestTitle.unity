@@ -2655,6 +2655,11 @@ PrefabInstance:
       propertyPath: catFactory
       value: 
       objectReference: {fileID: 1495937933}
+    - target: {fileID: 6024413241600845223, guid: 3b87b49cee405ab4693443d8a91e5c0c,
+        type: 3}
+      propertyPath: timer
+      value: 102
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b87b49cee405ab4693443d8a91e5c0c, type: 3}
 --- !u!4 &402468335 stripped
