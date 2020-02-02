@@ -19,6 +19,9 @@ public class PlayerControl : MonoBehaviour
     public AudioSource throwAudioSource;
     public AudioClip[] throwAudioClips;
 
+    public AudioSource pickUpAudioSource;
+    public AudioClip[] pickUpAudioClips;
+
     public bool facingRight = false;
     private Vector2 ourMoveDir;
 
@@ -108,7 +111,11 @@ public class PlayerControl : MonoBehaviour
                     !facingRight && hit.gameObject.transform.position.x < this.transform.position.x)
                 {
                    // Debug.Log("cat in range!");
-                    if (isThrowing == null && pickingUp == null && Input.GetButtonDown("PickUp")) StackCat(hit.gameObject);
+                if (isThrowing == null && pickingUp == null && Input.GetButtonDown("PickUp")) {
+                    StackCat(hit.gameObject);
+                    pickUpAudioSource.clip = pickUpAudioClips[Random.Range(0, pickUpAudioClips.Length)];
+                    pickUpAudioSource.Play(); 
+                } 
                 }
 
             }
