@@ -68,4 +68,20 @@ public class CatMultiply : MonoBehaviour
         yield return new WaitForSeconds(timeToSex);
         CalmCat();
     }
+
+    public void StopEndSexy()
+    {
+        if (anticalmness != null)
+            StopCoroutine(anticalmness);
+    }
+
+    public void CallEndSexy()
+    {
+        if(makeBaby)
+        {
+            if (anticalmness != null)
+                StopCoroutine(EndSexy());
+            anticalmness = StartCoroutine(EndSexy());
+        }
+    }
 }
