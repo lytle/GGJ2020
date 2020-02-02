@@ -67,7 +67,7 @@ public class CatMultiply : MonoBehaviour
         float timeToSex = Random.Range(5f, 8f);
         yield return new WaitForSeconds(timeToSex);
         //Debug.Log("adding cat");
-        if (Random.Range(0, 10f) < 3f)
+        if (Random.Range(0, 10f) < 2.7f)
         {
             makeBaby = false;
             DisengageSexyAura();
