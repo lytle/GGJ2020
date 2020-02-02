@@ -57,7 +57,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 567409c454f0b1a4781fd7fdc4d759db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sexAudioSource: {fileID: 0}
+  sexAudioSource: {fileID: 7563253374409610094, guid: 438f088674f21459d852065e3755ec45,
+    type: 3}
   sexAudioClips:
   - {fileID: 8300000, guid: c47b6064458ce41cdb27d8dafbba6eef, type: 3}
   - {fileID: 8300000, guid: 6b9fd2695f6444e19b9f4b7af401089d, type: 3}
@@ -67,8 +68,8 @@ MonoBehaviour:
     type: 3}
   censorCloud: {fileID: 2506501414523419169, guid: 5f8cb01bbf014e3449ab98258a5e815b,
     type: 3}
-  timer: {fileID: 6024413241600845217}
-  timerText: {fileID: 0}
+  timer: 60
+  catometer: {fileID: 0}
   hornyCats: []
   sexingCats: []
   matingHitbox: 2

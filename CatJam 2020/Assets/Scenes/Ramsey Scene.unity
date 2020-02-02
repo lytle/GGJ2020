@@ -121,6 +121,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!82 &186380496 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7563253374409610094, guid: 438f088674f21459d852065e3755ec45,
+    type: 3}
+  m_PrefabInstance: {fileID: 345829956}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &345829956
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -497,6 +503,11 @@ PrefabInstance:
       propertyPath: matingHitbox
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6024413241600845223, guid: 3b87b49cee405ab4693443d8a91e5c0c,
+        type: 3}
+      propertyPath: sexAudioSource
+      value: 
+      objectReference: {fileID: 186380496}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b87b49cee405ab4693443d8a91e5c0c, type: 3}
 --- !u!1001 &696895784
