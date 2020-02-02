@@ -341,6 +341,11 @@ PrefabInstance:
       propertyPath: timeRemaining
       value: 45
       objectReference: {fileID: 0}
+    - target: {fileID: 6024413241600845217, guid: 3b87b49cee405ab4693443d8a91e5c0c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6024413241600845222, guid: 3b87b49cee405ab4693443d8a91e5c0c,
         type: 3}
       propertyPath: m_LocalPosition.x

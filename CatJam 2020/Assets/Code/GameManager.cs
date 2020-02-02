@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float timer = 60.0f;
 
-    [SerializeField] public Slider catometer;
+    [SerializeField] public GameObject catometer;
 
     [SerializeField]
     private List<GameObject> hornyCats;
@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
         {
             if (timer > 0)
             {
-                catometer.value = timer / 60.0f;
+                //catometer.GetComponent<Slider>().value = timer / 60.0f;
                 timer -= Time.deltaTime;
             }
 
