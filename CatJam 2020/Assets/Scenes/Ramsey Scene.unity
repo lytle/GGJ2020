@@ -519,6 +519,21 @@ PrefabInstance:
       propertyPath: sexAudioSource
       value: 
       objectReference: {fileID: 1921525852}
+    - target: {fileID: 6024413241600845223, guid: 3b87b49cee405ab4693443d8a91e5c0c,
+        type: 3}
+      propertyPath: sexAudioSource.Array.data[0]
+      value: 
+      objectReference: {fileID: 1921525852}
+    - target: {fileID: 6024413241600845223, guid: 3b87b49cee405ab4693443d8a91e5c0c,
+        type: 3}
+      propertyPath: sexAudioSource.Array.data[1]
+      value: 
+      objectReference: {fileID: 1921525852}
+    - target: {fileID: 6024413241600845223, guid: 3b87b49cee405ab4693443d8a91e5c0c,
+        type: 3}
+      propertyPath: sexAudioSource.Array.data[2]
+      value: 
+      objectReference: {fileID: 1921525852}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b87b49cee405ab4693443d8a91e5c0c, type: 3}
 --- !u!1001 &696895784
