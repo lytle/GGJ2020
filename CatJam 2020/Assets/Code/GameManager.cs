@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            Debug.Log("Counter:" + counter);
+           // Debug.Log("Counter:" + counter);
 
             for(int i = hornyCats.Count-1; i >= 0; i--)
             {
