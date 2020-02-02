@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         if (state == State.menu)
         {
             StartCoroutine(Fade(true));
-
+            score = 4;
         }
         else if (state == State.game)
         {
@@ -124,7 +124,6 @@ public class GameManager : MonoBehaviour
         //AUDIO
         AudioClip clip = sexAudioClips[Random.Range(0, sexAudioClips.Length)];
         sexAudioSource.PlayOneShot(clip, 1f);
-        score++;
 
     }
 
@@ -145,10 +144,14 @@ public class GameManager : MonoBehaviour
         else if (ran >= 90)
             chance = 4;
         GameObject[] newCats = new GameObject[chance];
+        
         for(int i = 0; i < chance; i++)
         {
+            Debug.Log(i);
             GameObject newCat = GameObject.Instantiate(catPrefab, pos, Quaternion.identity);
             newCats[i] = newCat;
+            score++;
+            Debug.Log("SCORE: " + score);
         }
        
 
