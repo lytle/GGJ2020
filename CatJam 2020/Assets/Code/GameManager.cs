@@ -80,6 +80,8 @@ public class GameManager : MonoBehaviour
                 }
             }
 
+           //Debug.Log("timer:" + timer / 60.0f);
+
             for(int i = hornyCats.Count-1; i >= 0; i--)
             {
                 if (!hornyCats[i].GetComponent<CatMultiply>().makeBaby)
