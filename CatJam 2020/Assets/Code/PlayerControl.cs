@@ -96,8 +96,6 @@ public class PlayerControl : MonoBehaviour
         // Update Cat Stack
         UpdateCatStack();
 
-        if (Input.GetButtonDown("PickUp")) Debug.Log("mmoooooooo");
-
         // Check for throw
         if (Input.GetButton("Drop")) ThrowCats();
     }
@@ -149,7 +147,6 @@ public class PlayerControl : MonoBehaviour
 
     private void ThrowCats()
     {
-        Debug.Log("Throwing cats");
         if (catStack.Count > 0)
         {
             anim.SetBool("HandsUp", false);
@@ -176,7 +173,6 @@ public class PlayerControl : MonoBehaviour
 
     private void StackCat(GameObject catToStack)
     {
-        Debug.Log("Attemping pickup");
         if (catStack.Count < maxCatCount)
         {
             pickUpAudioSource.clip = pickUpAudioClips[Random.Range(0, pickUpAudioClips.Length)];

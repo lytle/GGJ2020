@@ -120,9 +120,7 @@ public class CatMultiply : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Hit Foudntain");
-        Debug.Log(collision.transform.name);
-        if(smelly)
+        if(smelly && collision.CompareTag("Fountain"))
         {
             Debug.Log("Washing");
             WashCat();
