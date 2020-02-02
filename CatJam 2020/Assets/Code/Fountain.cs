@@ -16,7 +16,7 @@ public class Fountain : MonoBehaviour
 
     public void CatInMe()
     {
-        //fountainSound.PlayOneShot();
+        fountainSound.PlayOneShot(fountainSound.clip, 1f);
         bubble.Play();
     }
 
