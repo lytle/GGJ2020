@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
                     CatMultiply secondCatGenitals = otherCat.GetComponent<CatMultiply>();
                     if (secondCatGenitals.enabled && secondCatGenitals.makeBaby)
                     {  
-                        if (Vector2.Distance(cat.transform.position, otherCat.transform.position) < .6f)
+                        if (Vector2.Distance(cat.transform.position, otherCat.transform.position) < 1.2f)
                         {
                             firstCatGenitals.makeBaby = false;
                             secondCatGenitals.makeBaby = false;

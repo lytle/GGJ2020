@@ -55,5 +55,17 @@ public class CatMultiply : MonoBehaviour
         sexyAura.SetActive(true);
         GameManager.singleton.AddHornyCat(this.gameObject);
         Debug.Log("adding cat");
+
+        StartCoroutine(EndSexy());
+    }
+
+    IEnumerator EndSexy()
+    {
+        float timeToSex = Random.Range(5f, 10f);
+        yield return new WaitForSeconds(timeToSex);
+        makeBaby = false;
+        sexyAura.SetActive(false);
+        GameManager.singleton.RemoveHornyCat(this.gameObject);
+        Debug.Log("adding cat");
     }
 }
