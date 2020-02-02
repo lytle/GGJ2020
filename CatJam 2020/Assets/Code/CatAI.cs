@@ -23,45 +23,12 @@ public class CatAI : MonoBehaviour
     float timer = 0f;
 
     public Vector2 min, max;
+    
 
-    private bool runAwayCat, uwuCat;
-
-
-    public enum CatType
-    {
-        NormalCat = 0,
-        RunAwayCat = 1,
-    }
-
-    private CatType _type;
-
-    public CatType type
-    {
-        get { return _type; }
-        set
-        {
-            _type = value;
-            switch (_type)
-            {
-                case CatType.NormalCat:
-                    {
-                        Debug.Log("Normal");
-                        break;
-                    }
-                case CatType.RunAwayCat:
-                    {
-                        Debug.Log("RunAway");
-                        runAwayCat = true;
-                        break;
-                    }
-            }
-        }
-    }
 
 
     void Start()
     {
-        type = (CatType)1;
     }
     
     void FixedUpdate()
@@ -72,31 +39,17 @@ public class CatAI : MonoBehaviour
         if(timer <= 0)
         {
 
-
-            if(!uwuCat)
             randomVec = new Vector3(Random.Range(min.x, max.x), Random.Range(min.y, max.y), 0f);
-            
-            ChangeDir(transform.position.x < randomVec.x);
 
-            if (runAwayCat && (transform.position - PlayerControl.instance.transform.position).sqrMagnitude < 20f)
+            if ((transform.position - PlayerControl.instance.transform.position).sqrMagnitude < 20f)
             {
-                //ChangeDir(PlayerControl.instance.facingRight);
                 randomVec += PlayerControl.instance.transform.right * sideDirection * 5f;
             }
-
-            if(uwuCat && (transform.position - PlayerControl.instance.transform.position).sqrMagnitude > 20f)
-            {
-                //ChangeDir(!PlayerControl.instance.facingRight);
-                randomVec = PlayerControl.instance.transform.position + new Vector3(Random.Range(0f,1f), Random.Range(0f,1f), 0);
-            }
+            ChangeDir(transform.position.x < randomVec.x);
 
             timer = Random.Range(0f, 3f);
             
         }
-
-
-        //transform.position = Vector3.Lerp(transform.position, randomVec, Time.deltaTime * speed );
-
         transform.position = Vector3.MoveTowards(transform.position, randomVec, speed * Time.deltaTime);
 
     }
@@ -113,20 +66,6 @@ public class CatAI : MonoBehaviour
         }
 
         transform.localScale = new Vector3(sideDirection * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-
-    }
-
-    private IEnumerator MakeBabyBigger()
-    {
-        while(transform.localScale.y < 1)
-        {
-            GetComponentInChildren<Cat>().transform.localScale = Vector3.Lerp(GetComponentInChildren<Cat>().transform.localScale, Vector3.one, 0.3f);
-            yield return new WaitForEndOfFrame();
-        }
-    }
-
-    private void CheckWithinRadius(float radius)
-    {
 
     }
 
