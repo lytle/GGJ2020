@@ -11,6 +11,8 @@ public class TitleScreenManagewr : MonoBehaviour
     private Image black;
 
     private bool leaving;
+
+    public AudioSource audioSource;
     
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,7 @@ public class TitleScreenManagewr : MonoBehaviour
         }
         else if (leaving)
         {
+            StartCoroutine(FadeOutAudio(audioSource, 2f));
             StartCoroutine(FadeEffect());
             leaving = false;
         }
@@ -50,5 +53,20 @@ public class TitleScreenManagewr : MonoBehaviour
 
         SceneManager.LoadScene("Ramsey Scene", LoadSceneMode.Single);
 
+    }
+
+    IEnumerator FadeOutAudio(AudioSource audioSource, float FadeTime)
+    {
+        float startVolume = audioSource.volume;
+
+        while (audioSource.volume > 0)
+        {
+            audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
+
+            yield return null;
+        }
+
+        audioSource.Stop();
+        audioSource.volume = startVolume;
     }
 }

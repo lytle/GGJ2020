@@ -137,11 +137,27 @@ public class GameManager : MonoBehaviour
         //throw cats in random directions
         momma.SetActive(true);
         pappa.SetActive(true);
-        GameObject newCat = GameObject.Instantiate(catPrefab, pos, Quaternion.identity);
+        int ran = Random.Range(1, 100);
+        int chance = 1;
+        if (ran <= 60)
+            chance = 1;
+        else if (ran <= 80)
+            chance = 2;
+        else if (ran >= 90)
+            chance = 4;
+        GameObject[] newCats = new GameObject[chance];
+        for(int i = 0; i < chance; i++)
+        {
+            GameObject newCat = GameObject.Instantiate(catPrefab, pos, Quaternion.identity);
+            newCats[i] = newCat;
+        }
+       
 
         momma.GetComponent<CatMultiply>().CalmCat();
         pappa.GetComponent<CatMultiply>().CalmCat();
-        newCat.GetComponent<CatMultiply>().CalmCat();
+
+        foreach(GameObject cat in newCats)
+            cat.GetComponent<CatMultiply>().CalmCat();
     }
 
     public GameObject GetNewCat()
