@@ -67,7 +67,7 @@ MonoBehaviour:
     type: 3}
   censorCloud: {fileID: 2506501414523419169, guid: 5f8cb01bbf014e3449ab98258a5e815b,
     type: 3}
-  timer: 90
+  timer: 102
   catometer: {fileID: 0}
   hornyCats: []
   sexingCats: []
