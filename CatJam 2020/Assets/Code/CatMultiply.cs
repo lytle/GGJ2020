@@ -50,7 +50,7 @@ public class CatMultiply : MonoBehaviour
 
     IEnumerator BecomeSexy()
     {
-        float timeToSex = Random.Range(5f, 10f);
+        float timeToSex = Random.Range(5f, 20f);
         yield return new WaitForSeconds(timeToSex);
         makeBaby = true;
         sexyAura.SetActive(true);
