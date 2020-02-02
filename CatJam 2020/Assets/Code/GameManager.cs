@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
     private int _score = 0;
     public RectTransform slider;
 
+    public UnityEngine.UI.Image blackFader;
+
 
     State state;
     // Start is called before the first frame update
@@ -50,7 +52,7 @@ public class GameManager : MonoBehaviour
 
         if (singleton == null)
             singleton = this;
-        state = State.game;
+        state = State.menu;
     }
 
     // Update is called once per frame
@@ -60,17 +62,20 @@ public class GameManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.G))
                 state = State.game;
+            //if (blackFader.color.a < 255) blackFader.color.a++;
+            //else state = State.game;
+
         }
         else if (state == State.game)
         {
             if (timer > 0)
             {
                 //catometer.GetComponent<Slider>().value = timer / 60.0f;
-                
                 timer -= Time.deltaTime;
-
-                if(slider)
-                    slider.sizeDelta = new Vector2((timer / maxTimer) * 750f, slider.sizeDelta.y);
+                slider.sizeDelta = new Vector2((timer / maxTimer) * 750f, slider.sizeDelta.y);
+            } else
+            {
+                state = State.end;
             }
 
             for(int i = 0; i < hornyCats.Count-1; i++)
@@ -108,6 +113,7 @@ public class GameManager : MonoBehaviour
         }
         else if (state == State.end)
         {
+            //if (blackFader.color.a < 255) blackFader.color.a++;
         }
     }
     public void makeNewCat(Vector3 pos, GameObject momma, GameObject pappa)
