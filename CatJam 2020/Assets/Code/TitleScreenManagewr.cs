@@ -31,7 +31,7 @@ public class TitleScreenManagewr : MonoBehaviour
         }
         else if (leaving)
         {
-            StartCoroutine(FadeOutAudio(audioSource, 2f));
+            StartCoroutine(FadeOutAudio(audioSource, 1.5f));
             StartCoroutine(FadeEffect());
             leaving = false;
         }
