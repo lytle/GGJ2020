@@ -57,11 +57,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 567409c454f0b1a4781fd7fdc4d759db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sexAudioSource: {fileID: 0}
+  sexAudioSource:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   sexAudioClips:
   - {fileID: 8300000, guid: c47b6064458ce41cdb27d8dafbba6eef, type: 3}
   - {fileID: 8300000, guid: 6b9fd2695f6444e19b9f4b7af401089d, type: 3}
   - {fileID: 8300000, guid: 58815613071f9423cbc1962e2bd2eb9e, type: 3}
+  voices: 0
   catFactory: {fileID: 0}
   catPrefab: {fileID: 3351773376365985380, guid: bdf7dca7803b7d04ab767e939aa40271,
     type: 3}
