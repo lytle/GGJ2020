@@ -63,6 +63,7 @@ public class CatMaster : MonoBehaviour
 
     IEnumerator BeingThrown(bool facingRight, float playerY)
     {
+        breedingAparatus.canBeWashed = true;
         float destinationX = 19.0f * (facingRight ? 1.0f : -1.0f);
         float gravity = 0.04f;
 
@@ -76,6 +77,13 @@ public class CatMaster : MonoBehaviour
         EnableBreed();
         EnableMove();
         breedingAparatus.pickedup = false;
+        StartCoroutine(NoLongerWashable());
         yield return null;
+    }
+
+    IEnumerator NoLongerWashable()
+    {
+        yield return new WaitForSeconds(1.5f);
+        breedingAparatus.canBeWashed = false;
     }
 }
