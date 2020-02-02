@@ -96,6 +96,8 @@ public class PlayerControl : MonoBehaviour
         // Update Cat Stack
         UpdateCatStack();
 
+        if (Input.GetButtonDown("PickUp")) Debug.Log("mmoooooooo");
+
         // Check for throw
         if (Input.GetButton("Drop")) ThrowCats();
     }
