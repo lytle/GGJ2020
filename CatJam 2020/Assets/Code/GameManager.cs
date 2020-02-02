@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     {
         if (singleton == null)
             singleton = this;
-        state = State.menu;
+        state = State.game;
     }
 
     // Update is called once per frame

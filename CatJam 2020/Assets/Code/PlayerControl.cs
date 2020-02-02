@@ -118,7 +118,7 @@ public class PlayerControl : MonoBehaviour
         {
             var catToMove = catStack.ToArray()[i];
             var playerDisplacement = catDisplacementFromPlayer + (catStack.Count - i + 1) * 1f;
-            var swayingXpos = Mathf.Lerp(catToMove.transform.position.x, this.transform.position.x, 0.2f -(catDispalcementInStack * (catStack.Count - i + 1)));
+            var swayingXpos = Mathf.Lerp(catToMove.transform.position.x, this.transform.position.x, 0.25f -(catDispalcementInStack * (catStack.Count - i + 1)));
             catToMove.transform.position = new Vector3(swayingXpos, this.transform.position.y + playerDisplacement, 0.0f); //Vector3.Lerp(catToMove.transform.position, playerDisplacement + this.transform.position, 0.2f - (0.03f * (i + 1)));
         }
     }
