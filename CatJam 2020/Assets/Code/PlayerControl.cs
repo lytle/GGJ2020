@@ -25,6 +25,15 @@ public class PlayerControl : MonoBehaviour
     public bool facingRight = false;
     private Vector2 ourMoveDir;
 
+    public enum Player
+    {
+        PlayerBlue = 1,
+        PlayerRed = 2
+    }
+
+    public Player player;
+    private int playerr;
+
     private void Awake()
     {
         if(instance == null)
@@ -33,18 +42,26 @@ public class PlayerControl : MonoBehaviour
         }
         boxCollider = GetComponentInChildren<BoxCollider2D>();
         anim = GetComponentInChildren<Animator>();
+
+
+    }
+
+    private void Start()
+    {
+        playerr = (int)player;
     }
 
     private Vector3 centerDispalcement = new Vector3(0.0f, 1.47f, 0.0f); // this should be CameraCenter's y
     public Transform reticle;
 
+
     private void Update()
     {
         // Use GetAxisRaw to ensure our input is either 0, 1 or -1.
-        ourMoveDir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        ourMoveDir = new Vector2(Input.GetAxisRaw("Horizontal" + playerr.ToString()), Input.GetAxisRaw("Vertical" + playerr.ToString()));
 
         // acceleration
-        if(ourMoveDir != Vector2.zero)
+        if (ourMoveDir != Vector2.zero)
         {
             velocity += accel;
             if (velocity > maxVel) velocity = maxVel;
@@ -63,9 +80,9 @@ public class PlayerControl : MonoBehaviour
 
         this.transform.Translate(ourMoveDir * velocity * Time.deltaTime);
 
-        
+
         // restrict y movement
-        if(this.transform.position.y > 13.0f)
+        if (this.transform.position.y > 13.0f)
         {
             this.transform.position = new Vector3(this.transform.position.x, 13.0f);
         }
@@ -84,7 +101,7 @@ public class PlayerControl : MonoBehaviour
         }
 
         // Update rotation
-        if((ourMoveDir.x > 0.0f && !facingRight) || (ourMoveDir.x < 0.0f && facingRight))
+        if ((ourMoveDir.x > 0.0f && !facingRight) || (ourMoveDir.x < 0.0f && facingRight))
         {
             facingRight = !facingRight;
             spriteObject.localScale = new Vector3(spriteObject.localScale.x * -1.0f, spriteObject.localScale.y, spriteObject.localScale.z);
@@ -97,7 +114,11 @@ public class PlayerControl : MonoBehaviour
         UpdateCatStack();
 
         // Check for throw
-        if (Input.GetButton("Drop")) ThrowCats();
+        if (Input.GetButton("Drop" + playerr.ToString()))
+        {
+            Debug.Log("Pressed Drop");
+            ThrowCats();
+        }
     }
 
     private void CheckForCats()
@@ -113,7 +134,7 @@ public class PlayerControl : MonoBehaviour
                     !facingRight && hit.gameObject.transform.position.x < this.transform.position.x)
                 {
                     // Debug.Log("cat in range!");
-                    if (isThrowing == null && pickingUp == null && Input.GetButtonDown("PickUp"))
+                    if (isThrowing == null && pickingUp == null && Input.GetButtonDown("PickUp" + playerr.ToString()))
                     {
                         StackCat(hit.gameObject);
                     }
@@ -149,6 +170,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (catStack.Count > 0)
         {
+            Debug.Log("Throwing Cat " + playerr);
             anim.SetBool("HandsUp", false);
             isThrowing = StartCoroutine("ThrowAllCats");
             //Audio for throwing

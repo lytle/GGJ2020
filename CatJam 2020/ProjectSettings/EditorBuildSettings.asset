@@ -8,13 +8,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TitleScreen.unity
     guid: 640bedcae9627b849b7938e174cfff88
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestTitle.unity
     guid: b940454dce0f4f748bcd65ed527768a9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Ramsey Scene.unity
     guid: 308161b72659dcc4da71b1441305d2fe
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/End Scene.unity
     guid: 324f61b7231dc9443ae02f88daf885d0
+  - enabled: 1
+    path: Assets/Scenes/Pember10 Scene.unity
+    guid: ff8d6b7322d499841acf3c57a5127827
   m_configObjects: {}
