@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e58e257089b45248bb4da3f49442bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speed: 5
   min: {x: -25, y: -10}
   max: {x: 25, y: 10}
 --- !u!114 &7926405445710909026
@@ -115,6 +115,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SexParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768877235239845012, guid: 0833c91d0c8599e43bc27a34166addc7,
+        type: 3}
+      propertyPath: ColorModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768877235239845012, guid: 0833c91d0c8599e43bc27a34166addc7,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768877235239845012, guid: 0833c91d0c8599e43bc27a34166addc7,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime1
+      value: 18890
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768877235239845012, guid: 0833c91d0c8599e43bc27a34166addc7,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768877235239845012, guid: 0833c91d0c8599e43bc27a34166addc7,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.m_NumAlphaKeys
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6957550680813889282, guid: 0833c91d0c8599e43bc27a34166addc7,
         type: 3}
