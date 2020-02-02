@@ -124,6 +124,7 @@ public class CatMultiply : MonoBehaviour
         {
             Debug.Log("Washing");
             WashCat();
+            Fountain.singleton.CatInMe();
         }
     }
 }
