@@ -89,7 +89,7 @@ MonoBehaviour:
   throwAudioClips:
   - {fileID: 8300000, guid: 5b6805a7a6a724ceeaf9fdc14c620dcc, type: 3}
   facingRight: 0
-  reticle: {fileID: 0}
+  reticle: {fileID: 3589573049544376712}
   catDisplacementFromPlayer: 1.47
   catDispalcementInStack: 0.02
 --- !u!50 &1356164318418349641
