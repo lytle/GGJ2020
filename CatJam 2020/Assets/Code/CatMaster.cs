@@ -29,6 +29,7 @@ public class CatMaster : MonoBehaviour
     public void GotPickedUp()
     {
         breedingAparatus.StopEndSexy();
+        breedingAparatus.pickedup = true;
         DisableBreed();
         DisableMove();
         GetComponent<Collider2D>().enabled = false;
@@ -75,6 +76,7 @@ public class CatMaster : MonoBehaviour
         GetComponent<Collider2D>().enabled = true;
         EnableBreed();
         EnableMove();
+        breedingAparatus.pickedup = false;
         yield return null;
     }
 }
