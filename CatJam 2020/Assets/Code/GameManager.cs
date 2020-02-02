@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 enum State { menu, game, end };
 
@@ -24,6 +25,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float timer = 60.0f;
 
+    private float maxTimer;
+
     [SerializeField] public GameObject catometer;
 
     [SerializeField]
@@ -34,10 +37,17 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float matingHitbox;
 
+    private int _score = 0;
+    public RectTransform slider;
+
+
     State state;
     // Start is called before the first frame update
     void Start()
     {
+
+        maxTimer = timer;
+
         if (singleton == null)
             singleton = this;
         state = State.game;
@@ -57,6 +67,7 @@ public class GameManager : MonoBehaviour
             {
                 //catometer.GetComponent<Slider>().value = timer / 60.0f;
                 timer -= Time.deltaTime;
+                slider.sizeDelta = new Vector2((timer / maxTimer) * 750f, slider.sizeDelta.y);
             }
 
             for(int i = 0; i < hornyCats.Count-1; i++)
@@ -79,8 +90,6 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-
-           Debug.Log("timer:" + timer / 60.0f);
 
             for(int i = hornyCats.Count-1; i >= 0; i--)
             {
@@ -137,5 +146,27 @@ public class GameManager : MonoBehaviour
     public void RemoveHornyCat(GameObject cat)
     {
         hornyCats.Remove(cat);
+    }
+
+    public void LoadScene(string _scene)
+    {
+        SceneManager.LoadScene(_scene);
+    }
+
+    public int score
+    {
+        get
+        {
+            return _score;
+        }
+
+        set
+        {
+            _score = value;
+            Debug.Log("score " + value);
+            Debug.Log("max cats" + (float)(value / 100) * 750f);
+            slider.sizeDelta = new Vector2((float)(value / 100f) * 750f, 30f);
+        }
+
     }
 }
