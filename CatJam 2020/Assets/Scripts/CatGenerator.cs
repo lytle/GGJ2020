@@ -23,5 +23,4 @@ public class CatGenerator : MonoBehaviour
     {
         return sprites[Random.Range(0, sprites.Count)];
     }
-
 }
