@@ -24,13 +24,13 @@ public class TitleScreenManagewr : MonoBehaviour
     {
         if (Input.GetButtonDown("Start") && !leaving)
         {
-            StartCoroutine(LoadGame());
+            //StartCoroutine(LoadGame());
             leaving = true;
         }
         else if (leaving)
         {
-            black.CrossFadeAlpha(1, .10f, false);
-            Debug.Log("fading");
+            StartCoroutine(FadeEffect());
+            leaving = false;
         }
 
         this.GetComponent<CanvasRenderer>().SetAlpha(0.5f * (Mathf.Sin(5f * Time.time) + 0.75f));
@@ -38,8 +38,25 @@ public class TitleScreenManagewr : MonoBehaviour
 
     IEnumerator LoadGame()
     {
+        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("Ramsey Scene", LoadSceneMode.Single); 
         Debug.Log("meow meow");
         yield return null;
+    }
+
+    IEnumerator FadeEffect()
+    {
+        float alpha = 0f;
+
+        while(alpha < 1f)
+        {
+            Debug.Log(alpha);
+            black.color = new Color(0, 0, 0, alpha);
+            alpha += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
+        SceneManager.LoadScene("Ramsey Scene", LoadSceneMode.Single);
+
     }
 }
