@@ -63,6 +63,7 @@ MonoBehaviour:
   speed: 10
   min: {x: -25, y: -10}
   max: {x: 25, y: 10}
+  canBeHorny: 0
 --- !u!114 &7926405445710909026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,8 +77,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   makeBaby: 0
+  smelly: 0
   breedDelay: 8
   sexyAura: {fileID: 2070007486446361777}
+  smellyAura: {fileID: 1188028411298639695}
 --- !u!61 &-272254423514837968
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -225,7 +228,7 @@ PrefabInstance:
     - target: {fileID: 903722030303194915, guid: 0833c91d0c8599e43bc27a34166addc7,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2103238697578730305, guid: 0833c91d0c8599e43bc27a34166addc7,
         type: 3}
@@ -379,6 +382,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0833c91d0c8599e43bc27a34166addc7, type: 3}
+--- !u!1 &1188028411298639695 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 903722030303194915, guid: 0833c91d0c8599e43bc27a34166addc7,
+    type: 3}
+  m_PrefabInstance: {fileID: 2086877391621996652}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8968985268922885998 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6957550680813889282, guid: 0833c91d0c8599e43bc27a34166addc7,
