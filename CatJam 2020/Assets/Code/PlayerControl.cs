@@ -32,6 +32,9 @@ public class PlayerControl : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
     }
 
+    private Vector3 centerDispalcement = new Vector3(0.0f, 1.47f, 0.0f); // this should be CameraCenter's y
+    public Transform reticle;
+
     private void Update()
     {
         // Use GetAxisRaw to ensure our input is either 0, 1 or -1.
@@ -42,8 +45,13 @@ public class PlayerControl : MonoBehaviour
         {
             velocity += accel;
             if (velocity > maxVel) velocity = maxVel;
+
+            // walking anim
             anim.SetBool("isWalking", true);
-        } else
+            // reticle math
+            reticle.position = Vector3.Lerp(reticle.position, this.transform.position + new Vector3(ourMoveDir.x, ourMoveDir.y, 0.0f) * 1.7f, 0.25f);
+        }
+        else
         {
             velocity -= decel;
             if (velocity < 0f) velocity = 0f;
@@ -99,7 +107,7 @@ public class PlayerControl : MonoBehaviour
                 if (facingRight && hit.gameObject.transform.position.x > this.transform.position.x ||
                     !facingRight && hit.gameObject.transform.position.x < this.transform.position.x)
                 {
-                    Debug.Log("cat in range!");
+                   // Debug.Log("cat in range!");
                     if (isThrowing == null && pickingUp == null && Input.GetButtonDown("PickUp")) StackCat(hit.gameObject);
                 }
 
@@ -144,7 +152,7 @@ public class PlayerControl : MonoBehaviour
         while(catStack.Count > 0)
         {
             var catToThrow = catStack.Pop();
-            catToThrow.GetComponent<CatMaster>().Throw(facingRight, this.transform.position.y);
+            catToThrow.GetComponent<CatMaster>().Throw(facingRight, reticle.position.y);
             anim.SetTrigger("Drop");
             yield return new WaitForSeconds(0.3f);
         }
