@@ -16,8 +16,8 @@ public class TitleScreenManagewr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Start")) SceneManager.LoadScene("Chance Scene", LoadSceneMode.Additive);
+        if (Input.GetButtonDown("Start")) { SceneManager.LoadScene("Ramsey Scene", LoadSceneMode.Additive); Debug.Log("meow meow"); }
 
-        titleScreen.transform.position = new Vector3(0f, 3f * Mathf.Sin(0.25f * Time.time), 1.0f);
+        this.GetComponent<CanvasRenderer>().SetAlpha(0.5f * (Mathf.Sin(5f * Time.time) + 0.75f));
     }
 }
