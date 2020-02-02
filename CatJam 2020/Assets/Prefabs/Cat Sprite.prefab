@@ -287,6 +287,7 @@ GameObject:
   - component: {fileID: 6947328759453475020}
   - component: {fileID: 5330161970157691818}
   - component: {fileID: 1316324118597168765}
+  - component: {fileID: 4563327524924328197}
   m_Layer: 0
   m_Name: Cat Sprite
   m_TagString: Untagged
@@ -343,3 +344,14 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!210 &4563327524924328197
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6326056811582443079}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
