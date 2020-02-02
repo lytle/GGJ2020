@@ -63,25 +63,25 @@ public class PlayerControl : MonoBehaviour
 
         this.transform.Translate(ourMoveDir * velocity * Time.deltaTime);
 
-        /*
+        
         // restrict y movement
-        if(this.transform.position.y > 5.0f)
+        if(this.transform.position.y > 13.0f)
         {
-            this.transform.position = new Vector3(this.transform.position.x, 5.0f);
+            this.transform.position = new Vector3(this.transform.position.x, 13.0f);
         }
-        else if (this.transform.position.y < -5.0f)
+        else if (this.transform.position.y < -13.0f)
         {
-            this.transform.position = new Vector3(this.transform.position.x, -5.0f);
+            this.transform.position = new Vector3(this.transform.position.x, -13.0f);
         }
         // restrict x
-        if (this.transform.position.x > 9.0f)
+        if (this.transform.position.x > 25.0f)
         {
-            this.transform.position = new Vector3(9.0f, this.transform.position.y);
+            this.transform.position = new Vector3(25.0f, this.transform.position.y);
         }
-        else if (this.transform.position.x < -9.0f)
+        else if (this.transform.position.x < -25.0f)
         {
-            this.transform.position = new Vector3(-9.0f, this.transform.position.y);
-        }*/
+            this.transform.position = new Vector3(-25.0f, this.transform.position.y);
+        }
 
         // Update rotation
         if((ourMoveDir.x > 0.0f && !facingRight) || (ourMoveDir.x < 0.0f && facingRight))
@@ -104,21 +104,25 @@ public class PlayerControl : MonoBehaviour
 
     private void CheckForCats()
     {
-        Collider2D hit = Physics2D.OverlapBox(transform.position, boxCollider.size, 0);
-            // if its a cat
+        Collider2D[] hits = Physics2D.OverlapBoxAll(transform.position, boxCollider.size, 0);
+        // if its a cat
+        foreach (var hit in hits)
+        {
             if (hit.transform.root.gameObject.GetComponent<CatAI>() != null)
             {
                 // if we are facing it
                 if (facingRight && hit.gameObject.transform.position.x > this.transform.position.x ||
                     !facingRight && hit.gameObject.transform.position.x < this.transform.position.x)
                 {
-                   // Debug.Log("cat in range!");
-                if (isThrowing == null && pickingUp == null && Input.GetButtonDown("PickUp")) {
-                    StackCat(hit.gameObject);
-                } 
+                    // Debug.Log("cat in range!");
+                    if (isThrowing == null && pickingUp == null && Input.GetButtonDown("PickUp"))
+                    {
+                        StackCat(hit.gameObject);
+                    }
                 }
 
             }
+        }
     }
     [Header("Cat Stack Numbers")]
     public float catDisplacementFromPlayer = 2.8f;
