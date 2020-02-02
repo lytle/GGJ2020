@@ -60,10 +60,7 @@ public class GameManager : MonoBehaviour
     {
         if (state == State.menu)
         {
-            if (Input.GetKeyDown(KeyCode.G))
-                state = State.game;
-            //if (blackFader.color.a < 255) blackFader.color.a++;
-            //else state = State.game;
+            StartCoroutine(Fade(true));
 
         }
         else if (state == State.game)
@@ -71,8 +68,11 @@ public class GameManager : MonoBehaviour
             if (timer > 0)
             {
                 //catometer.GetComponent<Slider>().value = timer / 60.0f;
+                
                 timer -= Time.deltaTime;
-                slider.sizeDelta = new Vector2((timer / maxTimer) * 750f, slider.sizeDelta.y);
+
+                if (slider)
+                    slider.sizeDelta = new Vector2((timer / maxTimer) * 750f, slider.sizeDelta.y);
             } else
             {
                 state = State.end;
@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
         }
         else if (state == State.end)
         {
-            //if (blackFader.color.a < 255) blackFader.color.a++;
+            StartCoroutine(Fade(false));
         }
     }
     public void makeNewCat(Vector3 pos, GameObject momma, GameObject pappa)
@@ -174,5 +174,38 @@ public class GameManager : MonoBehaviour
             _score = value;
         }
 
+    }
+
+    IEnumerator Fade(bool _fadeIn)
+    {
+        if (_fadeIn)
+        {
+
+            float alpha = 1f;
+
+            while (alpha > 0f)
+            {
+
+                blackFader.color = new Color(0, 0, 0, alpha);
+                alpha -= Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+            state = State.game;
+        }
+
+        else
+        {
+            float alpha = 0f;
+
+            while (alpha > 1f)
+            {
+                blackFader.color = new Color(0, 0, 0, alpha);
+                alpha += Time.deltaTime;
+                yield return new WaitForEndOfFrame();
+            }
+
+            SceneManager.LoadScene("EndScene", LoadSceneMode.Single);
+        }
+        
     }
 }
