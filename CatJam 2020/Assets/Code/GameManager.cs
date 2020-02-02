@@ -123,9 +123,10 @@ public class GameManager : MonoBehaviour
         pappa.SetActive(false);
         StartCoroutine(CatSex(pos, momma, pappa));
         //AUDIO
-        sexAudioSource[voices].clip = sexAudioClips[Random.Range(0, sexAudioClips.Length)];
-        sexAudioSource[voices].Play();
+        sexAudioSource[voices % 3].clip = sexAudioClips[Random.Range(0, sexAudioClips.Length)];
+        sexAudioSource[voices % 3].Play();
 
+        voices += 1;
         score++;
 
     }

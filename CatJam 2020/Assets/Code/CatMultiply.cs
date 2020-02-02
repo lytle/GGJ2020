@@ -117,4 +117,15 @@ public class CatMultiply : MonoBehaviour
     {
         sexyAura.SetActive(false);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Hit Foudntain");
+        Debug.Log(collision.transform.name);
+        if(smelly)
+        {
+            Debug.Log("Washing");
+            WashCat();
+        }
+    }
 }
