@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class CatMultiply : MonoBehaviour
 {
-    public bool makeBaby;
+    public bool makeBaby, smelly;
 
     [SerializeField]
     private float breedDelay = 3f;
     [SerializeField]
-    private GameObject sexyAura;
+    private GameObject sexyAura, smellyAura;
 
     private Coroutine calmness;
     private Coroutine anticalmness;
@@ -42,9 +42,15 @@ public class CatMultiply : MonoBehaviour
     public void CalmCat()
     {
         makeBaby = false;
-        sexyAura.SetActive(false);
+        DisengageSexyAura();
         if(calmness != null)
         StopCoroutine(calmness);
+        if(!smelly) calmness = StartCoroutine("BecomeSexy");
+    }
+
+    public void WashCat()
+    {
+        smelly = false;
         calmness = StartCoroutine("BecomeSexy");
     }
 
@@ -53,13 +59,25 @@ public class CatMultiply : MonoBehaviour
         float timeToSex = Random.Range(5f, 20f);
         yield return new WaitForSeconds(timeToSex);
         makeBaby = true;
-        sexyAura.SetActive(true);
+        EngageSexyAura();
         GameManager.singleton.AddHornyCat(this.gameObject);
         //Debug.Log("adding cat");
+        if (Random.Range(0, 10f) < 0.25f)
+        {
+            smelly = true;
+            smellyAura.SetActive(true);
+        }
+        else
+        {
+            makeBaby = true;
+            sexyAura.SetActive(true);
+            GameManager.singleton.AddHornyCat(this.gameObject);
+            //Debug.Log("adding cat");
 
-        if (anticalmness != null)
-            StopCoroutine(EndSexy());
-        anticalmness = StartCoroutine(EndSexy());
+            if (anticalmness != null)
+                StopCoroutine(EndSexy());
+            anticalmness = StartCoroutine(EndSexy());
+        }
     }
 
     IEnumerator EndSexy()
@@ -83,5 +101,15 @@ public class CatMultiply : MonoBehaviour
                 StopCoroutine(EndSexy());
             anticalmness = StartCoroutine(EndSexy());
         }
+    }
+
+    public void EngageSexyAura()
+    {
+        sexyAura.SetActive(true);
+    }
+
+    public void DisengageSexyAura()
+    {
+        sexyAura.SetActive(false);
     }
 }
