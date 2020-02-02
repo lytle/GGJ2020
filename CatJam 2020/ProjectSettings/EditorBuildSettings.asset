@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ramsey Scene.unity
     guid: 308161b72659dcc4da71b1441305d2fe
+  - enabled: 1
+    path: Assets/Scenes/End Scene.unity
+    guid: 324f61b7231dc9443ae02f88daf885d0
   m_configObjects: {}
