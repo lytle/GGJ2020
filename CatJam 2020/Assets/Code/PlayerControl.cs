@@ -96,6 +96,8 @@ public class PlayerControl : MonoBehaviour
         // Update Cat Stack
         UpdateCatStack();
 
+        if (Input.GetButtonDown("PickUp")) Debug.Log("mmoooooooo");
+
         // Check for throw
         if (Input.GetButton("Drop")) ThrowCats();
     }
@@ -113,8 +115,6 @@ public class PlayerControl : MonoBehaviour
                    // Debug.Log("cat in range!");
                 if (isThrowing == null && pickingUp == null && Input.GetButtonDown("PickUp")) {
                     StackCat(hit.gameObject);
-                    pickUpAudioSource.clip = pickUpAudioClips[Random.Range(0, pickUpAudioClips.Length)];
-                    pickUpAudioSource.Play(); 
                 } 
                 }
 
@@ -136,11 +136,12 @@ public class PlayerControl : MonoBehaviour
             var swayingXpos = Mathf.Lerp(catToMove.transform.position.x, this.transform.position.x, 0.25f -(catDispalcementInStack * (catStack.Count - i + 1)));
             catToMove.transform.position = new Vector3(swayingXpos, this.transform.position.y + playerDisplacement, 0.0f); //Vector3.Lerp(catToMove.transform.position, playerDisplacement + this.transform.position, 0.2f - (0.03f * (i + 1)));
         }
+        anim.SetBool("HandsUp", catStack.Count > 0);
     }
 
     [SerializeField]
     public Stack<GameObject> catStack = new Stack<GameObject>();
-    int maxCatCount = 3;
+    int maxCatCount = 2;
 
     private void ThrowCats()
     {
@@ -174,6 +175,8 @@ public class PlayerControl : MonoBehaviour
         Debug.Log("Attemping pickup");
         if (catStack.Count < maxCatCount)
         {
+            pickUpAudioSource.clip = pickUpAudioClips[Random.Range(0, pickUpAudioClips.Length)];
+            pickUpAudioSource.Play(); 
             anim.SetTrigger("Pickup");
             anim.SetBool("HandsUp", true);
             pickingUp = StartCoroutine(DelayedCatStack(catToStack, 0.15f));
