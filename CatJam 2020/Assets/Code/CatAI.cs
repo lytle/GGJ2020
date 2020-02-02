@@ -23,6 +23,8 @@ public class CatAI : MonoBehaviour
     float timer = 0f;
 
     public Vector2 min, max;
+
+    public bool canBeHorny = false;
     
 
 
@@ -47,8 +49,13 @@ public class CatAI : MonoBehaviour
             }
             ChangeDir(transform.position.x < randomVec.x);
 
-            timer = Random.Range(0f, 3f);
+            timer = Random.Range(0f, 6f);
             
+        }
+
+        if(Vector3.Distance(transform.position, randomVec) < 1f)
+        {
+            canBeHorny = !canBeHorny;
         }
         transform.position = Vector3.MoveTowards(transform.position, randomVec, speed * Time.deltaTime);
 
