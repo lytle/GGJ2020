@@ -60,7 +60,6 @@ public class CatMultiply : MonoBehaviour
         yield return new WaitForSeconds(timeToSex);
         makeBaby = true;
         EngageSexyAura();
-        GameManager.singleton.AddHornyCat(this.gameObject);
         //Debug.Log("adding cat");
         if (Random.Range(0, 10f) < 0.25f)
         {
