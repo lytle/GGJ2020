@@ -40,5 +40,6 @@ public class TitleScreenManagewr : MonoBehaviour
     {
         SceneManager.LoadScene("Ramsey Scene", LoadSceneMode.Single); 
         Debug.Log("meow meow");
+        yield return null;
     }
 }
