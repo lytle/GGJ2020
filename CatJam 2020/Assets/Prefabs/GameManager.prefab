@@ -39,7 +39,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6024413241600845216}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9beb1d15c47063b48a2ff528ab5d0396, type: 3}
   m_Name: 
@@ -67,8 +67,9 @@ MonoBehaviour:
     type: 3}
   censorCloud: {fileID: 2506501414523419169, guid: 5f8cb01bbf014e3449ab98258a5e815b,
     type: 3}
-  timer: {fileID: 6024413241600845217}
-  timerText: {fileID: 0}
+  timer: 90
+  catometer: {fileID: 0}
   hornyCats: []
   sexingCats: []
   matingHitbox: 2
+  slider: {fileID: 0}

@@ -163,9 +163,6 @@ public class GameManager : MonoBehaviour
         set
         {
             _score = value;
-            Debug.Log("score " + value);
-            Debug.Log("max cats" + (float)(value / 100) * 750f);
-            slider.sizeDelta = new Vector2((float)(value / 100f) * 750f, 30f);
         }
 
     }
