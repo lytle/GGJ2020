@@ -29,7 +29,7 @@ public class TitleScreenManagewr : MonoBehaviour
         }
         else if (leaving)
         {
-            black.CrossFadeAlpha(1, 2.0f, false);
+            black.CrossFadeAlpha(1, .10f, false);
             Debug.Log("fading");
         }
 
