@@ -73,3 +73,4 @@ MonoBehaviour:
   sexingCats: []
   matingHitbox: 2
   slider: {fileID: 0}
+  blackFader: {fileID: 0}
