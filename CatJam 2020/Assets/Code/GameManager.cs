@@ -12,9 +12,8 @@ public class GameManager : MonoBehaviour
     public static GameManager singleton;
 
     //AUDIO
-    public AudioSource[] sexAudioSource;
+    public AudioSource sexAudioSource;
     public AudioClip[] sexAudioClips;
-    public int voices;
 
     [SerializeField]
     private CatGenerator catFactory;
@@ -123,10 +122,8 @@ public class GameManager : MonoBehaviour
         pappa.SetActive(false);
         StartCoroutine(CatSex(pos, momma, pappa));
         //AUDIO
-        sexAudioSource[voices % 3].clip = sexAudioClips[Random.Range(0, sexAudioClips.Length)];
-        sexAudioSource[voices % 3].Play();
-
-        voices += 1;
+        AudioClip clip = sexAudioClips[Random.Range(0, sexAudioClips.Length)];
+        sexAudioSource.PlayOneShot(clip, 1f);
         score++;
 
     }
