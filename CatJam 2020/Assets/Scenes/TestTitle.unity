@@ -10306,6 +10306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   black: {fileID: 1721738462}
+  audioSource: {fileID: 1596212937}
 --- !u!1001 &1556836101
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10642,6 +10643,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4440f12e043e42d458120f21ff63b52b, type: 3}
+--- !u!82 &1596212937 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4279727704018605445, guid: 0a0c4b191350d43d4a5d758c75c083e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1832081129013301550}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1608063047
 PrefabInstance:
   m_ObjectHideFlags: 0
