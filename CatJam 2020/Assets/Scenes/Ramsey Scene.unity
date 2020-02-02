@@ -487,6 +487,11 @@ PrefabInstance:
       propertyPath: blackFader
       value: 
       objectReference: {fileID: 184896064}
+    - target: {fileID: 6024413241600845223, guid: 3b87b49cee405ab4693443d8a91e5c0c,
+        type: 3}
+      propertyPath: sexAudioSource
+      value: 
+      objectReference: {fileID: 1921525852}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b87b49cee405ab4693443d8a91e5c0c, type: 3}
 --- !u!1001 &696895784
@@ -1313,6 +1318,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e010202f3de6aa42b2700bb79d3577f, type: 3}
+--- !u!82 &1921525852 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7563253374409610094, guid: 438f088674f21459d852065e3755ec45,
+    type: 3}
+  m_PrefabInstance: {fileID: 345829956}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5716308476629584021
 PrefabInstance:
   m_ObjectHideFlags: 0
