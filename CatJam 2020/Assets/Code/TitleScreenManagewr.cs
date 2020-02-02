@@ -51,7 +51,7 @@ public class TitleScreenManagewr : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        SceneManager.LoadScene("Ramsey Scene", LoadSceneMode.Single);
+        SceneManager.LoadScene("Pember10 Scene", LoadSceneMode.Single);
 
     }
 
