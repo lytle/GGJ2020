@@ -42,7 +42,7 @@ public class CatMultiply : MonoBehaviour
     public void CalmCat()
     {
         makeBaby = false;
-        sexyAura.SetActive(false);
+        DisengageSexyAura();
         if(calmness != null)
         StopCoroutine(calmness);
         if(!smelly) calmness = StartCoroutine("BecomeSexy");
@@ -58,6 +58,9 @@ public class CatMultiply : MonoBehaviour
     {
         float timeToSex = Random.Range(5f, 20f);
         yield return new WaitForSeconds(timeToSex);
+        makeBaby = true;
+        EngageSexyAura();
+        //Debug.Log("adding cat");
         if (Random.Range(0, 10f) < 0.25f)
         {
             smelly = true;
@@ -97,5 +100,15 @@ public class CatMultiply : MonoBehaviour
                 StopCoroutine(EndSexy());
             anticalmness = StartCoroutine(EndSexy());
         }
+    }
+
+    public void EngageSexyAura()
+    {
+        sexyAura.SetActive(true);
+    }
+
+    public void DisengageSexyAura()
+    {
+        sexyAura.SetActive(false);
     }
 }
