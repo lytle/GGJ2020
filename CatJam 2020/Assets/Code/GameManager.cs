@@ -22,9 +22,9 @@ public class GameManager : MonoBehaviour
     private GameObject censorCloud;
 
     [SerializeField]
-    private Timer timer;
-    [SerializeField]
-    private UnityEngine.UI.Text timerText;
+    private float timer = 60.0f;
+
+    [SerializeField] public Slider catometer;
 
     [SerializeField]
     private List<GameObject> hornyCats;
@@ -53,12 +53,12 @@ public class GameManager : MonoBehaviour
         }
         else if (state == State.game)
         {
-            // if (timer.timeRemaining > 0)
-            //{
-            // timerText.text = timer.timeRemaining.ToString("0.00");
-            //timer.tick();
+            if (timer > 0)
+            {
+                catometer.value = timer / 60.0f;
+                timer -= Time.deltaTime;
+            }
 
-            int counter = 0;
             for(int i = 0; i < hornyCats.Count-1; i++)
             {
                 GameObject cat = hornyCats[i];
@@ -66,7 +66,6 @@ public class GameManager : MonoBehaviour
                 if (firstCatGenitals.enabled && firstCatGenitals.makeBaby)
                 for (int j = i + 1; j < hornyCats.Count; j++)
                 {
-                    counter++;
                     GameObject otherCat = hornyCats[j];
                     CatMultiply secondCatGenitals = otherCat.GetComponent<CatMultiply>();
                     if (secondCatGenitals.enabled && secondCatGenitals.makeBaby)
@@ -81,7 +80,7 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-           // Debug.Log("Counter:" + counter);
+           Debug.Log("timer:" + timer / 60.0f);
 
             for(int i = hornyCats.Count-1; i >= 0; i--)
             {
