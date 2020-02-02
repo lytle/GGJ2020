@@ -36,14 +36,6 @@ public class TitleScreenManagewr : MonoBehaviour
         this.GetComponent<CanvasRenderer>().SetAlpha(0.5f * (Mathf.Sin(5f * Time.time) + 0.75f));
     }
 
-    IEnumerator LoadGame()
-    {
-        yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene("Ramsey Scene", LoadSceneMode.Single); 
-        Debug.Log("meow meow");
-        yield return null;
-    }
-
     IEnumerator FadeEffect()
     {
         float alpha = 0f;

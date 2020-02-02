@@ -36,12 +36,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private float matingHitbox;
-
-    private int _score = 0;
+    
     public RectTransform slider;
 
     public UnityEngine.UI.Image blackFader;
-
+   
+    public static int score = 0;
 
     State state;
     // Start is called before the first frame update
@@ -125,6 +125,8 @@ public class GameManager : MonoBehaviour
         sexAudioSource.clip = sexAudioClips[Random.Range(0, sexAudioClips.Length)];
         sexAudioSource.Play();
 
+        score++;
+
     }
 
     IEnumerator CatSex(Vector3 pos, GameObject momma, GameObject pappa)
@@ -162,19 +164,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(_scene);
     }
 
-    public int score
-    {
-        get
-        {
-            return _score;
-        }
-
-        set
-        {
-            _score = value;
-        }
-
-    }
 
     IEnumerator Fade(bool _fadeIn)
     {
@@ -204,7 +193,7 @@ public class GameManager : MonoBehaviour
                 yield return new WaitForEndOfFrame();
             }
 
-            SceneManager.LoadScene("EndScene", LoadSceneMode.Single);
+            SceneManager.LoadScene("End Scene", LoadSceneMode.Single);
         }
         
     }
