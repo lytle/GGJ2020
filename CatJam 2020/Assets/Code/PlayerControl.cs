@@ -107,7 +107,7 @@ public class PlayerControl : MonoBehaviour
                 if (facingRight && hit.gameObject.transform.position.x > this.transform.position.x ||
                     !facingRight && hit.gameObject.transform.position.x < this.transform.position.x)
                 {
-                    Debug.Log("cat in range!");
+                   // Debug.Log("cat in range!");
                     if (isThrowing == null && pickingUp == null && Input.GetButtonDown("PickUp")) StackCat(hit.gameObject);
                 }
 
