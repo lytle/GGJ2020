@@ -69,7 +69,6 @@ public class CatMaster : MonoBehaviour
         while(this.transform.position.y > playerY) {
             this.transform.Translate(destinationX * Time.deltaTime, -12.0f * gravity * Time.deltaTime, 0.0f);
             gravity += 14.0f * Time.deltaTime;
-            Debug.Log("falling");
             yield return new WaitForEndOfFrame();
         }
 
