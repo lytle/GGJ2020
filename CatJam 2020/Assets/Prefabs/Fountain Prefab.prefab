@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6998014619260997831}
-  - component: {fileID: 3216628539202470941}
+  - component: {fileID: 3232259066970275805}
   m_Layer: 0
   m_Name: Fountain Collider
-  m_TagString: Untagged
+  m_TagString: Fountain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,19 +31,32 @@ Transform:
   m_Father: {fileID: 6665805563699706125}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &3216628539202470941
-BoxCollider:
+--- !u!61 &3232259066970275805
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5287546696469576430}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.094435215, y: 0.8688259}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7, y: 4, z: 1}
-  m_Center: {x: 0, y: 2, z: 0}
+  m_Size: {x: 7.761753, y: 2.7376518}
+  m_EdgeRadius: 0
 --- !u!1 &5677670436647222117
 GameObject:
   m_ObjectHideFlags: 0
@@ -54,10 +67,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6665805563699706125}
   - component: {fileID: 1566199252264777108}
-  - component: {fileID: 2809530900155144960}
   m_Layer: 0
   m_Name: Fountain Prefab
-  m_TagString: Untagged
+  m_TagString: Fountain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,22 +102,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3672a62082621bd4da3091e2cda75d29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &2809530900155144960
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5677670436647222117}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1001 &9215318949021634413
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -172,6 +168,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fountain Art
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446750290581647115, guid: 7a234bfd0341e564db773d5af6b7448f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Fountain
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a234bfd0341e564db773d5af6b7448f, type: 3}
