@@ -405,11 +405,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 6024413241600845217, guid: 3b87b49cee405ab4693443d8a91e5c0c,
-        type: 3}
-      propertyPath: timeRemaining
-      value: 45
-      objectReference: {fileID: 0}
     - target: {fileID: 6024413241600845222, guid: 3b87b49cee405ab4693443d8a91e5c0c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -467,9 +462,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6024413241600845223, guid: 3b87b49cee405ab4693443d8a91e5c0c,
         type: 3}
-      propertyPath: timerText
+      propertyPath: sexAudioSource
       value: 
-      objectReference: {fileID: 1817677558}
+      objectReference: {fileID: 1975337057}
     - target: {fileID: 6024413241600845223, guid: 3b87b49cee405ab4693443d8a91e5c0c,
         type: 3}
       propertyPath: catFactory
@@ -477,21 +472,9 @@ PrefabInstance:
       objectReference: {fileID: 1465433007}
     - target: {fileID: 6024413241600845223, guid: 3b87b49cee405ab4693443d8a91e5c0c,
         type: 3}
-      propertyPath: catPrefab
+      propertyPath: timerText
       value: 
-      objectReference: {fileID: 3351773376365985380, guid: bdf7dca7803b7d04ab767e939aa40271,
-        type: 3}
-    - target: {fileID: 6024413241600845223, guid: 3b87b49cee405ab4693443d8a91e5c0c,
-        type: 3}
-      propertyPath: censorCloud
-      value: 
-      objectReference: {fileID: 2506501414523419169, guid: 5f8cb01bbf014e3449ab98258a5e815b,
-        type: 3}
-    - target: {fileID: 6024413241600845223, guid: 3b87b49cee405ab4693443d8a91e5c0c,
-        type: 3}
-      propertyPath: matingHitbox
-      value: 2
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1817677558}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b87b49cee405ab4693443d8a91e5c0c, type: 3}
 --- !u!1001 &696895784
@@ -1216,6 +1199,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 438f088674f21459d852065e3755ec45, type: 3}
+--- !u!82 &1975337057 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7563253374409610094, guid: 438f088674f21459d852065e3755ec45,
+    type: 3}
+  m_PrefabInstance: {fileID: 1975337056}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5716308476629584021
 PrefabInstance:
   m_ObjectHideFlags: 0
