@@ -61,12 +61,12 @@ public class CatMaster : MonoBehaviour
 
     IEnumerator BeingThrown(bool facingRight, float playerY)
     {
-        float destinationX = 22.0f * (facingRight ? 1.0f : -1.0f);
-        float gravity = 0.02f;
+        float destinationX = 19.0f * (facingRight ? 1.0f : -1.0f);
+        float gravity = 0.04f;
 
         while(this.transform.position.y > playerY) {
             this.transform.Translate(destinationX * Time.deltaTime, -12.0f * gravity * Time.deltaTime, 0.0f);
-            gravity += 5.0f * Time.deltaTime;
+            gravity += 14.0f * Time.deltaTime;
             Debug.Log("falling");
             yield return new WaitForEndOfFrame();
         }

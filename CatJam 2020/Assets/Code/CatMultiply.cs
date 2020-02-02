@@ -12,6 +12,7 @@ public class CatMultiply : MonoBehaviour
     private GameObject sexyAura;
 
     private Coroutine calmness;
+    private Coroutine anticalmness;
 
     // Start is called before the first frame update
     void Start()
@@ -55,5 +56,16 @@ public class CatMultiply : MonoBehaviour
         sexyAura.SetActive(true);
         GameManager.singleton.AddHornyCat(this.gameObject);
         Debug.Log("adding cat");
+
+        if (anticalmness != null)
+            StopCoroutine(EndSexy());
+        anticalmness = StartCoroutine(EndSexy());
+    }
+
+    IEnumerator EndSexy()
+    {
+        float timeToSex = Random.Range(6f, 15f);
+        yield return new WaitForSeconds(timeToSex);
+        CalmCat();
     }
 }
