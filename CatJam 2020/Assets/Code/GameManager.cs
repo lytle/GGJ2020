@@ -202,13 +202,14 @@ public class GameManager : MonoBehaviour
 
         else
         {
-            float alpha = 0f;
+            float elapsedTime = 0f;
 
-            while (alpha > 1f)
-            {
-                blackFader.color = new Color(0, 0, 0, alpha);
-                alpha += Time.deltaTime;
-                yield return new WaitForEndOfFrame();
+            while (elapsedTime <= 1f)
+            { 
+                blackFader.color = new Color(0, 0, 0, elapsedTime);
+                elapsedTime += Time.deltaTime;
+                print(elapsedTime);
+                yield return null;
             }
 
             SceneManager.LoadScene("End Scene", LoadSceneMode.Single);
