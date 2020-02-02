@@ -15,6 +15,8 @@ public class CatMultiply : MonoBehaviour
     private Coroutine anticalmness;
 
     public bool pickedup;
+
+    public bool canBeWashed;
     
 
     // Start is called before the first frame update
@@ -22,6 +24,7 @@ public class CatMultiply : MonoBehaviour
     {
         CalmCat();
         pickedup = false;
+        canBeWashed = false;
     }
     // Update is called once per frame
     void Update()
@@ -120,7 +123,7 @@ public class CatMultiply : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(smelly && collision.CompareTag("Fountain"))
+        if(smelly && canBeWashed && collision.CompareTag("Fountain"))
         {
             Debug.Log("Washing");
             WashCat();
