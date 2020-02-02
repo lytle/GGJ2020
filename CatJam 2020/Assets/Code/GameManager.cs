@@ -27,6 +27,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> sexingCats;
 
+    [SerializeField]
+    private float matingHitbox;
+
     State state;
     // Start is called before the first frame update
     void Start()
@@ -64,7 +67,7 @@ public class GameManager : MonoBehaviour
                     CatMultiply secondCatGenitals = otherCat.GetComponent<CatMultiply>();
                     if (secondCatGenitals.enabled && secondCatGenitals.makeBaby)
                     {  
-                        if (Vector2.Distance(cat.transform.position, otherCat.transform.position) < 1.2f)
+                        if (Vector2.Distance(cat.transform.position, otherCat.transform.position) < matingHitbox)
                         {
                             firstCatGenitals.makeBaby = false;
                             secondCatGenitals.makeBaby = false;
