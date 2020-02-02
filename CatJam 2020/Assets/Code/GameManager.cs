@@ -66,8 +66,11 @@ public class GameManager : MonoBehaviour
             if (timer > 0)
             {
                 //catometer.GetComponent<Slider>().value = timer / 60.0f;
+                
                 timer -= Time.deltaTime;
-                slider.sizeDelta = new Vector2((timer / maxTimer) * 750f, slider.sizeDelta.y);
+
+                if(slider)
+                    slider.sizeDelta = new Vector2((timer / maxTimer) * 750f, slider.sizeDelta.y);
             }
 
             for(int i = 0; i < hornyCats.Count-1; i++)
