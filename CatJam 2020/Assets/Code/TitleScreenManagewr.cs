@@ -38,7 +38,6 @@ public class TitleScreenManagewr : MonoBehaviour
 
     IEnumerator LoadGame()
     {
-        yield return new WaitForSeconds(2f);
         SceneManager.LoadScene("Ramsey Scene", LoadSceneMode.Single); 
         Debug.Log("meow meow");
     }
