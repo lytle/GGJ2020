@@ -92,6 +92,9 @@ MonoBehaviour:
   pickUpAudioSource: {fileID: 711204816}
   pickUpAudioClips:
   - {fileID: 8300000, guid: 6f8d7ab2a65f94a3aa71791e257f376b, type: 3}
+  - {fileID: 8300000, guid: 7d69c7c59ac5e4b799f09e182f34f72e, type: 3}
+  - {fileID: 8300000, guid: 2903ab634c6184ca2964b4e38a0cfe7c, type: 3}
+  - {fileID: 8300000, guid: d93c709cb9763450ca83e0da1369f285, type: 3}
   facingRight: 0
   reticle: {fileID: 3589573049544376712}
   catDisplacementFromPlayer: 1.47

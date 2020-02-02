@@ -13067,6 +13067,7 @@ GameObject:
   - component: {fileID: 1550938503}
   - component: {fileID: 1550938505}
   - component: {fileID: 1550938504}
+  - component: {fileID: 1550938506}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -13113,15 +13114,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: '[Press START]'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bed385057a91e7f4ca74b30ad1ea69ca, type: 2}
+  m_sharedMaterial: {fileID: 4398050034753845460, guid: bed385057a91e7f4ca74b30ad1ea69ca,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278387473
-  m_fontColor: {r: 0.066037714, g: 0.009967957, b: 0.009967957, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -13139,8 +13141,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 4
-  m_fontSizeBase: 4
+  m_fontSize: 5.5
+  m_fontSizeBase: 5.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -13211,6 +13213,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550938502}
   m_CullTransparentMesh: 0
+--- !u!114 &1550938506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550938502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0900f2bfad7a7b04d92399001e4e9c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1556836101
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18807,6 +18821,8 @@ MonoBehaviour:
   throwAudioSource: {fileID: 8861391568462665561}
   throwAudioClips:
   - {fileID: 8300000, guid: 5b6805a7a6a724ceeaf9fdc14c620dcc, type: 3}
+  pickUpAudioSource: {fileID: 0}
+  pickUpAudioClips: []
   facingRight: 0
   reticle: {fileID: 0}
   catDisplacementFromPlayer: 1.47

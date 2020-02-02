@@ -96,6 +96,8 @@ public class PlayerControl : MonoBehaviour
         // Update Cat Stack
         UpdateCatStack();
 
+        if (Input.GetButtonDown("PickUp")) Debug.Log("mmoooooooo");
+
         // Check for throw
         if (Input.GetButton("Drop")) ThrowCats();
     }
@@ -136,11 +138,12 @@ public class PlayerControl : MonoBehaviour
             var swayingXpos = Mathf.Lerp(catToMove.transform.position.x, this.transform.position.x, 0.25f -(catDispalcementInStack * (catStack.Count - i + 1)));
             catToMove.transform.position = new Vector3(swayingXpos, this.transform.position.y + playerDisplacement, 0.0f); //Vector3.Lerp(catToMove.transform.position, playerDisplacement + this.transform.position, 0.2f - (0.03f * (i + 1)));
         }
+        anim.SetBool("HandsUp", catStack.Count > 0);
     }
 
     [SerializeField]
     public Stack<GameObject> catStack = new Stack<GameObject>();
-    int maxCatCount = 3;
+    int maxCatCount = 2;
 
     private void ThrowCats()
     {
